@@ -8,7 +8,7 @@ const contacts = [
     birthday: null,
     company: "Example Inc.",
     jobTitle: "Software Engineer",
-    website: "https://example.com",
+    websiteUrl: "https://example.com",
   },
   {
     id: 2,
@@ -19,7 +19,7 @@ const contacts = [
     birthday: null,
     company: "Example Inc.",
     jobTitle: "Software Engineer",
-    website: "https://example.com",
+    websiteUrl: "https://example.com",
   },
   {
     id: 3,
@@ -30,7 +30,7 @@ const contacts = [
     birthday: "1990-01-01",
     company: "Example Inc.",
     jobTitle: "Software Engineer",
-    website: "https://example.com",
+    websiteUrl: "https://example.com",
   },
   {
     id: 4,
@@ -41,9 +41,8 @@ const contacts = [
     birthday: "1990-01-01",
     company: "Example Inc.",
     jobTitle: "Software Engineer",
-    website: "https://example.com",
+    websiteUrl: "https://example.com",
   },
 ];
 
 console.log(contacts);
-console.table(contacts);
