@@ -3,61 +3,43 @@
 The **Address Book** project is designed to help users view, add, edit, group, and delete contacts, as well as display their interaction history.  
 The design was inspired by:
 
-- [Clay](https://clay.earth/)
+- [Clay ](https://clay.earth/)
 - [Less-Annoying-CRM](https://www.lessannoyingcrm.com/)
-- [Google-Contact](https://contacts.google.com/)
+- [Google-Contacts](https://contacts.google.com/)
+
+🔗 **Live Demo**: [address-book](https://address-book-six-theta.vercel.app/)
 
 > ⚠️ **Notes** : name of project still not decided.
 
-🔗**Live Demo**: [address-book](https://address-book-six-theta.vercel.app/)
+## 🌟 Features
 
-## Features 🌟
+1. **Contact:** All your connections gathered in one friendly space! **Easily browse, view, or reach out to anyone.** Keep relationships organized, meaningful, and just a tap away whenever you need them most.
 
-- **🔍️ Search**: global search such as contacts, notes, to do lists, etc.
-- **🏠 Home**: This page contains your contact's recent activities. There is a todo list and a calendar.
-- **➕ Add Contact**: will move to new tab. Contains a form for creating a new contact. The data that must be filled in is:
+2. **Add Contact:** Met someone new? Add them here and make sure you never lose touch! Save their name, number, email, and more, so you can stay connected wherever life takes you.
 
-        🌟 Require fields:
-        - Name
-        - Email
-        - Phone
+3. **Edit Contact:** Update your contact’s info anytime — change names, fix numbers, or add details. Keeping your address
 
-        ➕ Aditional fields:
-        - Address
-        - Birthday
-        - Company Name
-        - Job title
-        - Personal information
-        - Website
+4. **Search:** Need to find someone fast? Just type a name, phone, or email. Instantly see results and connect without scrolling endlessly — your people are always easy to reach here.
 
-> ⚠️ Notes: Email and phone numbers must be unique in the database.
+5. **Create a Group:** Make it easier to organize your people! Create groups for family, friends, or teams so you can message, plan, and connect with everyone you care about all at once.
 
-- **☎️ Contact**: Displays saved contacts. Each contact only displays the name, phone number, email address, and group information. However, when the user taps a contact, more detailed information about the contact will appear.
+## 🧩 Tech Stack
 
-- **📓 Notes**: contains your complete personal notes.
+- **Frontend:** HTML, CSS and JavaScript.
+- **Backend:** -
+- **Deployment:** Vercel.
 
-### ☎️ Contact Features
-
-- ✏️ edit a contact.
-- ⭐ make some contact to priority
-- 🗑️ delete a contact
-- ➕ 🎮add some contact to an group
-
-#### Make a Group 🎮💻🥳
-
-Make a groups and contact friends to it. Decorate it by adding your own group icon.
-
-## Design
+## 🎨 Design
 
 The design may evolve during development, but here are the initial wireframe and mockup:
 
 ### Wireframe
 
-![wireframe](/images/wireframe.png)
+![wireframe](/images/wireframe.svg)
 
 ### Mockup
 
-![design](/images/design.png)
+![design](/images/mockup.svg)
 
 ## 🏁Closing
 
