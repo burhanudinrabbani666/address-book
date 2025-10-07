@@ -1,76 +1,65 @@
-// --- start process ---
+CLASS Contact
+    ATTRIBUTE name
+    ATTRIBUTE email
+    ATTRIBUTE phone
+    ATTRIBUTE address
+    ATTRIBUTE birthday
+    ATTRIBUTE company
+    ATTRIBUTE jobTitle
+    ATTRIBUTE website
+ENDCLASS
+
+
 BEGIN
-
-// Initial state
- DISPLAY "home page" page
-//  can start in any page, axcept setting page
-
-// Step 1 : User clicks add contatc button
-WHEN user clicks "Add contact" button THEN
-  DISPLAY "Add Contact Form" page
-
-//  Step 2 : USer input requires fields
-READ "Enter Name"
-name = user input
-
-// Step 3: User Input Email
-READ "Enter Email"
-email = user input
-
-// Step 3.1: System checks if emaiill is already used
-IF systemCheckEmail(email) ==TRUE THEN
-  DISPLAY "Email already in use"
-  DISPLAY red "Error" message in input fields
-  READ "please enter a different email"
-  email = user input
-  RECHECK systemCheckEmail(email)
-ELSE
-  DISPLAY green checklist message in input fields
-ENDIF
-
-// Step 4: User inputs phone number
-READ "Enter Phone Number"
-phone = user input
-
-// step4.1: System checks if phone number already used
-IF systemCheckPhoneNumber(phone) ==TRUE THEN
-  DISPLAY "Invalid phone number"
-  DISPLAY red "Error" message in input fields
-  READ "please enter a valid phone number"
-  phone = user input
-  RECHECK systemCheckPhoneNumber(phone)
-ELSE
-  DISPLAY green checklist message in input fields
-ENDIF
-
-// step 5: User inputs additional info (optional)
-
-READ "Enter Address (optional)"
-address = user input  // can be left blank
-
-READ "Enter Birthday (optional)"
-birthday = user input  // can be left blank 
-
-READ "Enter companies (optional)"
-companies = user input  // can be left blank
-
-READ "Enter job title (optional)"
-jobTitle = user input  // can be left blank
-
-READ  "Enter website (optional)"
-website = user input  // can be left blank
-
-// Step 6: User click "Submit Contact" button
-WHEN user click "Submit Contact" button
-  IF name == EMPTY OR email == EMPTY OR phone == EMPTY THEN
-    DISPLAY "Please fill in all required fields" // name, email, phone are required
-    DISPLAY red "Error" message in input fields
-  ELSE
-    SAVE contact (name, email, phone, address, birthday, companies, jobTitle, website) to database
-    DISPLAY "Contact added successfully"
-    DISPLAY green "Success" message
-    REDIRECT to "home page"
+  IF user_click("+ Add Contact") THEN
+    OPEN AddContactForm
   ENDIF
 
+  DISPLAY "Add Contact Form Page"
 
+  INPUT "Name"
+
+  INPUT "Email"
+  CALL validateContactInfo(email)
+
+  INPUT "Phone Number"
+  CALL validateContactInfo(phone)
+
+  INPUT "Additonal information"
+
+  IF user_click("Create Contact" button) THEN
+    CALL validateContactInfo(email)
+    CALL validateContactInfo(phone)
+      IF name == EMPTY OR email == EMPTY OR phone == EMPTY THEN
+      DISPLAY "Please fill all required fields"
+    ELSE
+      SAVE contact TO database
+      CREATE newContact AS Contact
+      DISPLAY "Contact Added"
+  ENDIF
+
+  DISPLAY "main page"
 END
+
+
+  METHOD validateContactInfo(email)
+    IF validateContactInfo(required) == true THEN
+      WRITE "data valid" in input required field
+    ELSE 
+      DISPLAY "Email already in used"
+      WRITE "please enter different email"
+      INPUT "Email"
+      CALL validateContactInfo(email)
+    ENDIF
+  ENDMETHOD
+
+  METHOD validateContactInfo(phone)
+    IF validateContactInfo(phone) == true THEN
+      WRITE "data valid" in input required field
+    ELSE 
+      DISPLAY "Email already in used"
+      WRITE "please enter different email"
+      INPUT "Email"
+      CALL validateContactInfo(phone)
+    ENDIF
+  ENDMETHOD
