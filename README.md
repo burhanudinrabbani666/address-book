@@ -35,11 +35,11 @@ The design may evolve during development, but here are the initial wireframe and
 
 ### Wireframe
 
-![wireframe](/images/wireframe.svg)
+![wireframe](/images/design/wireframe.svg)
 
 ### Mockup
 
-![design](/images/mockup.svg)
+![design](/images/design/mockup.svg)
 
 ## 🏁Closing
 
