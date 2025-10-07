@@ -47,18 +47,3 @@ const contacts = [
 
 console.log(contacts);
 console.table(contacts);
-
-const age = 30;
-
-const message =
-  age > 18
-    ? "Hey, cute baby!"
-    : age < 18
-    ? "Hello, girl or boy!"
-    : age < 30
-    ? "Hello, woman or man!"
-    : age < 100
-    ? "Greeting, lady or gentleman!"
-    : "What an unusual age!";
-
-console.log(message);
