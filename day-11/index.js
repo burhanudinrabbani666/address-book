@@ -45,3 +45,11 @@ function logMessage() {
 
 logMessage();
 logMessage();
+
+// params: name, greeting
+function showMessage(name, greeting) {
+  console.log(`${greeting}, ${name}!`);
+}
+
+showMessage("Bear", "Hello"); // Hello, Bear!
+showMessage("Cat", "Welcome"); // Welcome, Cat!
