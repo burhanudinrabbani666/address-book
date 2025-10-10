@@ -46,4 +46,12 @@ const contacts = [
 ];
 
 console.log(contacts);
-console.table(contacts);
+
+for (let index = 0; index < 4; index++) {
+  const contact = contacts[index];
+
+  console.log(`
+👤 ${contact.name}
+📧 ${contact.email}
+📞 ${contact.phone}`);
+}
