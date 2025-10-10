@@ -34,3 +34,14 @@ console.log();
 for (let sizeShirt = 0; sizeShirt < 5; sizeShirt++) {
   console.log(sizeShirt);
 }
+
+// fiunction
+
+console.log();
+
+function logMessage() {
+  console.log(`Hello World!`);
+}
+
+logMessage();
+logMessage();
