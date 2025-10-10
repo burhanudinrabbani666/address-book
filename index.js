@@ -47,11 +47,15 @@ const contacts = [
 
 console.log(contacts);
 
-for (let index = 0; index < 4; index++) {
-  const contact = contacts[index];
+function displayContact() {
+  for (let index = 0; index < 4; index++) {
+    const contact = contacts[index];
 
-  console.log(`
+    console.log(`
 👤 ${contact.name}
 📧 ${contact.email}
 📞 ${contact.phone}`);
+  }
 }
+
+displayContact();
