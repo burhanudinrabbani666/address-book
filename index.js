@@ -45,10 +45,8 @@ const dataContacts = [
   },
 ];
 
-console.log(dataContacts);
-
-function displayContact(contacts) {
-  for (let index = 0; index < 4; index++) {
+function displayContacts(contacts) {
+  for (let index = 0; index < contacts.length; index++) {
     const contact = contacts[index];
 
     console.log(`
@@ -68,4 +66,4 @@ function removeContact() {}
 function addContactToGroup() {}
 function creatGroup() {}
 
-displayContact(dataContacts);
+displayContacts(dataContacts);
