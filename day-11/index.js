@@ -35,7 +35,7 @@ for (let sizeShirt = 0; sizeShirt < 5; sizeShirt++) {
   console.log(sizeShirt);
 }
 
-// fiunction
+// function
 
 console.log();
 
@@ -53,3 +53,10 @@ function showMessage(name, greeting) {
 
 showMessage("Bear", "Hello"); // Hello, Bear!
 showMessage("Cat", "Welcome"); // Welcome, Cat!
+
+function motor(name, date) {
+  console.log(`${name} ${date}`);
+}
+
+motor(`honda`, `2015`);
+motor(`mio`, `2012`);

@@ -1,4 +1,4 @@
-const contacts = [
+const dataContacts = [
   {
     id: 1,
     name: "Agus Mulyono",
@@ -45,17 +45,26 @@ const contacts = [
   },
 ];
 
-console.log(contacts);
+console.log(dataContacts);
 
-function displayContact() {
+// function adalah resep. atau sebuah metode yang bisa digunakan berkali-kali.
+function displayContact(contacts) {
   for (let index = 0; index < 4; index++) {
-    const contact = contacts[index];
+    const contact = contacts[index]; // contact adalah data dari dataContacs nomor ke [index]
 
     console.log(`
 👤 ${contact.name}
 📧 ${contact.email}
 📞 ${contact.phone}`);
-  }
+  } // contact.name adalah data nama dari contacts (spesifik)
 }
 
-displayContact();
+function showContacts() {}
+function editContact() {}
+function searchContact() {}
+function addContact() {}
+function removeContact() {}
+function addContactToGroup() {}
+function creatGroup() {}
+
+displayContact(dataContacts); // call function dispalyContact with variable (dataContacs)
