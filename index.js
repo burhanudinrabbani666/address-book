@@ -4,7 +4,7 @@ const dataContacts = [
     name: "Agus Mulyono",
     email: "agus@example.com",
     phone: "081234567890",
-    address: null,
+    address: "Pakalan pari, Indaramyu",
     birthday: null,
     company: "Example Inc.",
     jobTitle: "Software Engineer",
@@ -26,7 +26,7 @@ const dataContacts = [
     name: "Bowo MBG",
     email: "bowo@example.com",
     phone: "081234567892",
-    address: "Jl. in aja",
+    address: "Susukan, Cirebon.",
     birthday: "1990-01-01",
     company: "Example Inc.",
     jobTitle: "Software Engineer",
@@ -37,7 +37,7 @@ const dataContacts = [
     name: "Ariel Tatum",
     email: "tatum@example.com",
     phone: "081234567893",
-    address: "Jl. in aja",
+    address: "Ciwaringin,Cirebon",
     birthday: "1990-01-01",
     company: "Example Inc.",
     jobTitle: "Software Engineer",
@@ -47,16 +47,17 @@ const dataContacts = [
 
 console.log(dataContacts);
 
-// function adalah resep. atau sebuah metode yang bisa digunakan berkali-kali.
 function displayContact(contacts) {
   for (let index = 0; index < 4; index++) {
-    const contact = contacts[index]; // contact adalah data dari dataContacs nomor ke [index]
+    const contact = contacts[index];
 
     console.log(`
 👤 ${contact.name}
 📧 ${contact.email}
-📞 ${contact.phone}`);
-  } // contact.name adalah data nama dari contacts (spesifik)
+📞 ${contact.phone}
+📌 ${contact.address}
+`);
+  }
 }
 
 function showContacts() {}
@@ -67,4 +68,4 @@ function removeContact() {}
 function addContactToGroup() {}
 function creatGroup() {}
 
-displayContact(dataContacts); // call function dispalyContact with variable (dataContacs)
+displayContact(dataContacts);
