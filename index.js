@@ -55,12 +55,30 @@ function displayContacts(contacts) {
 📞 ${contact.phone}
 📌 ${contact.address}
 🎂 ${contact.birthday}
-🏛️  ${contact.company}
+🏛️ ${contact.company}
 🪛 ${contact.jobTitle}
 🌐 ${contact.websiteUrl}
 `);
   }
 }
+
+const createContact = [
+  ...dataContacts,
+  {
+    id: 5,
+    name: "Risaldi sedeki",
+    email: "Risaldi@example.com",
+    phone: "08123666660",
+    address: "ciwaringin, cirebon",
+    birthday: new Date("2001 : 04 :20"),
+    company: "Example Inc.",
+    jobTitle: "Software Engineer",
+    websiteUrl: "https://example.com",
+  },
+];
+
+console.log(createContact);
+displayContacts(createContact);
 
 function showContacts() {}
 function editContact() {}
@@ -69,5 +87,3 @@ function addContact() {}
 function removeContact() {}
 function addContactToGroup() {}
 function createGroup() {}
-
-displayContacts(dataContacts);
