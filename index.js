@@ -8,7 +8,7 @@ const dataContacts = [
     birthday: null,
     company: "Example Inc.",
     jobTitle: "Software Engineer",
-    website: "https://example.com",
+    websiteUrl: "https://example.com",
   },
   {
     id: 2,
@@ -19,7 +19,7 @@ const dataContacts = [
     birthday: null,
     company: "Example Inc.",
     jobTitle: "Software Engineer",
-    website: "https://example.com",
+    websiteUrl: "https://example.com",
   },
   {
     id: 3,
@@ -30,7 +30,7 @@ const dataContacts = [
     birthday: "1990-01-01",
     company: "Example Inc.",
     jobTitle: "Software Engineer",
-    website: "https://example.com",
+    websiteUrl: "https://example.com",
   },
   {
     id: 4,
@@ -41,14 +41,12 @@ const dataContacts = [
     birthday: "1990-01-01",
     company: "Example Inc.",
     jobTitle: "Software Engineer",
-    website: "https://example.com",
+    websiteUrl: "https://example.com",
   },
 ];
 
-console.log(dataContacts);
-
-function displayContact(contacts) {
-  for (let index = 0; index < 4; index++) {
+function displayContacts(contacts) {
+  for (let index = 0; index < contacts.length; index++) {
     const contact = contacts[index];
 
     console.log(`
@@ -56,6 +54,10 @@ function displayContact(contacts) {
 📧 ${contact.email}
 📞 ${contact.phone}
 📌 ${contact.address}
+🎂 ${contact.birthday}
+🏛️  ${contact.company}
+🪛 ${contact.jobTitle}
+🌐 ${contact.websiteUrl}
 `);
   }
 }
@@ -66,6 +68,6 @@ function searchContact() {}
 function addContact() {}
 function removeContact() {}
 function addContactToGroup() {}
-function creatGroup() {}
+function createGroup() {}
 
-displayContact(dataContacts);
+displayContacts(dataContacts);
