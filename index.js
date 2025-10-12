@@ -80,6 +80,17 @@ function createContact(newContact) {
   dataContacts = [...dataContacts, contact];
 }
 
+// mencari contact
+function searchContact(contactName) {
+  const found = dataContacts.find(
+    ({ name }) => name.toLowerCase() === contactName.toLowerCase()
+  );
+  console.log(found);
+}
+
+searchContact("Agus Mulyono");
+searchContact("Bowo MBG");
+
 createContact({
   name: "Budi Santoso",
   email: "budi@example.com",
@@ -93,6 +104,5 @@ createContact({
 
 displayContacts(dataContacts);
 
-function searchContact() {}
 function deleteContact() {}
 function editContact() {}
