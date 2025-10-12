@@ -1,4 +1,4 @@
-const dataContacts = [
+let dataContacts = [
   {
     id: 1,
     name: "Agus Mulyono",
@@ -46,7 +46,7 @@ const dataContacts = [
 ];
 
 function displayContacts(contacts) {
-  for (let index = 0; index < contacts.length; index++) {
+  for (let index = 0; index < dataContacts.length; index++) {
     const contact = contacts[index];
 
     console.log(`
@@ -62,28 +62,29 @@ function displayContacts(contacts) {
   }
 }
 
-const createContact = [
-  ...dataContacts,
-  {
-    id: 5,
-    name: "Risaldi sedeki",
-    email: "Risaldi@example.com",
-    phone: "08123666660",
-    address: "ciwaringin, cirebon",
-    birthday: new Date("2001 : 04 :20"),
-    company: "Example Inc.",
-    jobTitle: "Software Engineer",
-    websiteUrl: "https://example.com",
-  },
-];
+function createContact(newContact) {
+  const newId =
+    dataContacts.length > 0 ? dataContacts[dataContacts.length - 1].id + 1 : 1;
 
-console.log(createContact);
-displayContacts(createContact);
+  const contact = { id: newId, ...newContact };
 
-function showContacts() {}
-function editContact() {}
+  // Perbarui dataContacts dengan versi baru
+  dataContacts = [...dataContacts, contact];
+}
+
+createContact({
+  name: "Budi Santoso",
+  email: "budi@example.com",
+  phone: "081234567899",
+  address: "Cirebon, Jawa Barat",
+  birthday: "1992-03-21",
+  company: "Tech Corp",
+  jobTitle: "UI Designer",
+  websiteUrl: "https://techcorp.com",
+});
+
+displayContacts(dataContacts);
+
 function searchContact() {}
-function addContact() {}
-function removeContact() {}
-function addContactToGroup() {}
-function createGroup() {}
+function deleteContact() {}
+function editContact() {}
