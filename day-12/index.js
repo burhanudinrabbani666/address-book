@@ -1,58 +1,21 @@
-function horizontalLine() {
-  console.log(`\n`);
-}
+// spread oprator
 
-const members = [
-  { name: "Alice", age: 35 },
-  { name: "Bob", age: 40 },
-  { name: "Cory", age: 25 },
-  { name: "Dave", age: 30 },
-  { name: "Eve", age: 28 },
-];
+// spread operator to array
+const numbers = [1, 2, 3, 4, 5];
+const continuedNumbers = [...numbers, 6, 7, 8, 9];
 
-const updatedMembers = [
-  ...members,
-  { name: "Frank", age: 29 },
-  { name: "Grace", age: 32 },
-];
+console.log(continuedNumbers);
 
-console.log(updatedMembers);
+const contacts = ["agus", "heri", "ryan"];
+const newContact = [...contacts, "deus", "rivan", "jaya"];
+console.log(newContact);
 
-horizontalLine();
-
-const animal = {
-  name: "Po",
-  species: "Bear",
+// spread operator to object
+let employee = {
+  name: "udi",
+  gender: "gay",
+  skin : "brown",
+  address :"ampel"
 };
 
-const updatedAnimal = {
-  ...animal,
-  species: "Cat",
-  color: "White",
-};
 
-console.log(updatedAnimal);
-// { name: "Po", species: "Cat", color: "White" }
-horizontalLine();
-
-console.log(`hello`.toUpperCase());
-
-const matrix = [
-  [
-    [11, 12, 13],
-    [21, 22, 23],
-    [31, 32, 33],
-  ],
-  [
-    [41, 42, 43],
-    [51, 52, 53],
-    [61, 62, 63],
-  ],
-  [
-    [71, 72, 73],
-    [81, 82, 83],
-    [91, 92, 93],
-  ],
-];
-
-console.log(matrix[0][1][2]); // 23
