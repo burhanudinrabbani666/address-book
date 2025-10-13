@@ -65,8 +65,9 @@ function createContact(newContact) {
 
   const contact = { id: newId, ...newContact };
 
-  // Perbarui dataContacts dengan versi baru
+  // Replace contacts data with the new one
   dataContacts = [...dataContacts, contact];
+
   displayContacts(dataContacts);
 }
 
