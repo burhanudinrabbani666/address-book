@@ -61,3 +61,28 @@ addleaderBudur({
   Age: 22,
   Gender: "Man",
 });
+
+function horizonLine(title) {
+  console.log(`----------------${title}------------------`);
+}
+
+horizonLine("Rest Parameter");
+// Rest Parameter
+
+const person = {
+  fullname: "burhanudin rabbani",
+  role: "jungler",
+  age: "22",
+};
+
+const { fullname, ...personDetail } = person;
+console.log(fullname);
+console.log(personDetail);
+
+function sum(...numbers) {
+  return numbers.reduce((acc, curr) => acc + curr, 0);
+}
+console.log(sum(1, 2, 3, 4, 5)); // 15
+
+horizonLine("JavaScript Global");
+//string
