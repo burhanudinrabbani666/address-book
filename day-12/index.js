@@ -18,7 +18,7 @@ const updateAnimal = {
 console.log(updateAnimal);
 
 // spread array of object
-let leaderBlockKarangwangi = [
+let leadersBudur = [
   {
     id: 1,
     Name: "Nani",
@@ -35,7 +35,7 @@ let leaderBlockKarangwangi = [
 
 // bisa buat function addContact
 const updateLeaderBlockKarangwangi = [
-  ...leaderBlockKarangwangi,
+  ...leadersBudur,
   {
     id: 3,
     Name: "Rivai",
@@ -43,23 +43,20 @@ const updateLeaderBlockKarangwangi = [
     Gender: "Man",
   },
 ];
-
 console.log(updateLeaderBlockKarangwangi);
 
-function addLeaderBlockKarangwangi(leader) {
+function addleaderBudur(leader) {
   const newId =
-    leaderBlockKarangwangi.length > 0
-      ? leaderBlockKarangwangi[leaderBlockKarangwangi.length - 1].id + 1
-      : 1;
+    leadersBudur.length > 0 ? leadersBudur[leadersBudur.length - 1].id + 1 : 1;
 
   const newLeader = { id: newId, ...leader };
-  leaderBlockKarangwangi = [...leaderBlockKarangwangi, newLeader]; // pakai [] menambahkan object dalam aray
+  leadersBudur = [...leadersBudur, newLeader]; // pakai [] menambahkan object dalam aray
 
   console.log("✅ Add leader Success");
-  console.log(leaderBlockKarangwangi);
+  console.log(leadersBudur);
 }
 
-addLeaderBlockKarangwangi({
+addleaderBudur({
   name: "Bani",
   Age: 22,
   Gender: "Man",
