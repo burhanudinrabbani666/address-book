@@ -4,52 +4,32 @@ let dataContacts = [
     name: "Agus Mulyono",
     email: "agus@example.com",
     phone: "081234567890",
-    address: "Pakalan pari, Indaramyu",
+    address: "Jl. Pangkalan No.4, Pangkalan Pari, Ampel, Majalengka",
     birthday: new Date("2000-10-13"),
-    company: "Simnu",
-    jobTitle: "Coating 1",
-    websiteUrl: "agus.flex",
   },
   {
     id: 2,
     name: "Dana Agung",
     email: "dana@exammple.com",
     phone: "081234567891",
-    address: [
-      {
-        street: "Jl. Kasab No.3",
-        subdistrict: "Ciwaringin",
-        city: "Cirebon",
-        provience: " East Java",
-        country: "Indonesia",
-      },
-    ],
-    birthday: null,
-    company: "Example Inc.",
-    jobTitle: "Software Engineer",
-    websiteUrl: "https://example.com",
+    address: "Jl. Kasab No.3, Babakan, Ciwringin, Cirebon.",
+    birthday: new Date("2021-01-03"),
   },
   {
     id: 3,
-    name: "Bowo MBG",
-    email: "bowo@example.com",
+    name: "Rivan",
+    email: "rivan@example.com",
     phone: "081234567892",
-    address: "Susukan, Cirebon.",
-    birthday: "1990-01-01",
-    company: "Example Inc.",
-    jobTitle: "Software Engineer",
-    websiteUrl: "https://example.com",
+    address: "Jl. Majasari No.5, Majasari, Ligung, Majalengka.",
+    birthday: "1997-04-13",
   },
   {
     id: 4,
-    name: "Ariel Tatum",
-    email: "tatum@example.com",
+    name: "Nico",
+    email: "nico@example.com",
     phone: "081234567893",
-    address: "Ciwaringin,Cirebon",
-    birthday: "1990-01-01",
-    company: "Example Inc.",
-    jobTitle: "Software Engineer",
-    websiteUrl: "https://example.com",
+    address: "Jl. Ki Brajanata No.4, Budur, Ciwaringin, Cirebon",
+    birthday: "2001-02-20",
   },
 ];
 
@@ -61,9 +41,6 @@ function displayContacts(contacts) {
 📞 ${contact.phone}
 📌 ${contact.address}
 🎂 ${contact.birthday}
-🏛️ ${contact.company}
-🪛 ${contact.jobTitle}
-🌐 ${contact.websiteUrl}
 `);
   }
 }
