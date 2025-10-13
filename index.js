@@ -45,7 +45,7 @@ function displayContacts(contacts) {
   }
 }
 
-function searchContact(contacts, keyword) {
+function searchContactFullName(contacts, keyword) {
   const foundContact = contacts.filter((contact) =>
     contact.name.toLowerCase().includes(keyword.toLowerCase())
   );
@@ -71,8 +71,8 @@ function createContact(newContact) {
 }
 
 displayContacts(dataContacts);
-searchContact(dataContacts, "agus mulyono");
-searchContact(dataContacts, "angga"); // tidak ditemukan.
+searchContactFullName(dataContacts, "agus mulyono");
+searchContactFullName(dataContacts, "angga"); // tidak ditemukan.
 createContact({
   name: "Budi Santoso",
   email: "budi@example.com",
