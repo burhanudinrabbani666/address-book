@@ -5,7 +5,7 @@ let dataContacts = [
     email: "agus@example.com",
     phone: "081234567890",
     address: "Pakalan pari, Indaramyu",
-    birthday: null,
+    birthday: new Date("2000-10-13"),
     company: "Simnu",
     jobTitle: "Coating 1",
     websiteUrl: "agus.flex",
@@ -17,11 +17,11 @@ let dataContacts = [
     phone: "081234567891",
     address: [
       {
-        street: "",
-        subdistrict: "",
-        city: "cirebon",
-        provience: "",
-        country: "",
+        street: "Jl. Kasab No.3",
+        subdistrict: "Ciwaringin",
+        city: "Cirebon",
+        provience: " East Java",
+        country: "Indonesia",
       },
     ],
     birthday: null,
@@ -54,9 +54,7 @@ let dataContacts = [
 ];
 
 function displayContacts(contacts) {
-  for (let index = 0; index < dataContacts.length; index++) {
-    const contact = contacts[index];
-
+  for (let contact of contacts) {
     console.log(`
 👤 ${contact.name}
 📧 ${contact.email}
@@ -70,6 +68,21 @@ function displayContacts(contacts) {
   }
 }
 
+function searchContact(contacts, keyword) {
+  const foundContact = contacts.filter((contact) =>
+    contact.name.toLowerCase().includes(keyword.toLowerCase())
+  );
+
+  if (foundContact.length > 0) {
+    console.log("✅ pencarian berhasil\n");
+    displayContacts(foundContact); // function bisa dimasukan kefunction
+  } else {
+    console.log("❎ kontak tidak ditemukan!");
+  }
+
+  return foundContact;
+}
+
 function createContact(newContact) {
   const newId =
     dataContacts.length > 0 ? dataContacts[dataContacts.length - 1].id + 1 : 1;
@@ -80,17 +93,9 @@ function createContact(newContact) {
   dataContacts = [...dataContacts, contact];
 }
 
-// mencari contact
-function searchContact(contactName) {
-  const found = dataContacts.find(
-    ({ name }) => name.toLowerCase() === contactName.toLowerCase()
-  );
-  console.log(found);
-}
-
-searchContact("Agus Mulyono");
-searchContact("Bowo MBG");
-
+displayContacts(dataContacts);
+searchContact(dataContacts, "agus mulyono");
+searchContact(dataContacts, "angga"); // tidak ditemukan.
 createContact({
   name: "Budi Santoso",
   email: "budi@example.com",
@@ -101,8 +106,6 @@ createContact({
   jobTitle: "UI Designer",
   websiteUrl: "https://techcorp.com",
 });
-
-displayContacts(dataContacts);
 
 function deleteContact() {}
 function editContact() {}
