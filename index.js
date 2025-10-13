@@ -68,6 +68,7 @@ function createContact(newContact) {
 
   // Perbarui dataContacts dengan versi baru
   dataContacts = [...dataContacts, contact];
+  displayContacts(dataContacts);
 }
 
 displayContacts(dataContacts);
@@ -79,10 +80,4 @@ createContact({
   phone: "081234567899",
   address: "Cirebon, Jawa Barat",
   birthday: "1992-03-21",
-  company: "Tech Corp",
-  jobTitle: "UI Designer",
-  websiteUrl: "https://techcorp.com",
 });
-
-function deleteContact() {}
-function editContact() {}
