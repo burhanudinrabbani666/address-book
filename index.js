@@ -10,7 +10,7 @@ let dataContacts = [
   {
     id: 2,
     name: "Dana Agung",
-    email: "dana@exammple.com",
+    email: "dana@example.com",
     phone: "081234567891",
     address: "Jl. Kasab No.3, Babakan, Ciwringin, Cirebon.",
     birthday: new Date("2021-01-03"),
@@ -46,18 +46,17 @@ function displayContacts(contacts) {
 }
 
 function searchContactFullName(contacts, keyword) {
-  const foundContact = contacts.filter((contact) =>
+  const foundContacts = contacts.filter((contact) =>
     contact.name.toLowerCase().includes(keyword.toLowerCase())
   );
 
-  if (foundContact.length > 0) {
-    console.log("✅ pencarian berhasil\n");
-    displayContacts(foundContact); // function bisa dimasukan kefunction
+  if (foundContacts.length > 0) {
+    displayContacts(foundContacts);
   } else {
-    console.log("❎ kontak tidak ditemukan!");
+    console.error("❎ Contact not found");
   }
 
-  return foundContact;
+  return foundContacts;
 }
 
 function createContact(newContact) {
@@ -72,8 +71,11 @@ function createContact(newContact) {
 }
 
 displayContacts(dataContacts);
+
 searchContactFullName(dataContacts, "agus mulyono");
-searchContactFullName(dataContacts, "angga"); // tidak ditemukan.
+
+searchContactFullName(dataContacts, "angga");
+
 createContact({
   name: "Budi Santoso",
   email: "budi@example.com",
