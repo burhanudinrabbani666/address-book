@@ -3,32 +3,60 @@ let dataContacts = [
     id: 1,
     name: "Agus Mulyono",
     email: "agus@example.com",
-    phone: "081234567890",
-    address: "Jl. Pangkalan No.4, Pangkalan Pari, Ampel, Majalengka",
+    phone: "+62-812-3456-7890",
+    address: {
+      street: "Jl. pangkalan Node.4",
+      streetDetails: "Pangkalan Pari",
+      subDistrict: "Ampel",
+      city: "Indramayu",
+      zipCode: "45272",
+      country: "Indonesia",
+    },
     birthday: new Date("2000-10-13"),
   },
   {
     id: 2,
     name: "Dana Agung",
     email: "dana@exammple.com",
-    phone: "081234567891",
-    address: "Jl. Kasab No.3, Babakan, Ciwringin, Cirebon.",
+    phone: "+62- 812-3456-7891",
+    address: {
+      street: "Jl. Kasab No.3",
+      streetDetails: "Babakan",
+      subDistrict: "Ciwaringin",
+      city: "Cirebon",
+      zipCode: "45167",
+      country: "Indonesia",
+    },
     birthday: new Date("2021-01-03"),
   },
   {
     id: 3,
     name: "Rivan",
     email: "rivan@example.com",
-    phone: "081234567892",
-    address: "Jl. Majasari No.5, Majasari, Ligung, Majalengka.",
+    phone: "+62-812-3456-7892",
+    address: {
+      street: "Jl. Majasari No.5",
+      streetDetails: "Majasari",
+      subDistrict: "Ligung",
+      city: "Majalengka",
+      zipCode: "45456",
+      country: "Indonesia",
+    },
     birthday: "1997-04-13",
   },
   {
     id: 4,
     name: "Nico",
     email: "nico@example.com",
-    phone: "081234567893",
-    address: "Jl. Ki Brajanata No.4, Budur, Ciwaringin, Cirebon",
+    phone: "+62-812-3456-7893",
+    address: {
+      street: "Jl. Ki Braja Nata No.1",
+      streetDetails: "Budur",
+      subDistrict: "Ciwaringin",
+      city: "Cirebon",
+      zipCode: "45167",
+      country: "Indonesia",
+    },
     birthday: "2001-02-20",
   },
 ];
@@ -72,12 +100,12 @@ function createContact(newContact) {
 }
 
 displayContacts(dataContacts);
-searchContactFullName(dataContacts, "agus mulyono");
-searchContactFullName(dataContacts, "angga"); // tidak ditemukan.
-createContact({
-  name: "Budi Santoso",
-  email: "budi@example.com",
-  phone: "081234567899",
-  address: "Cirebon, Jawa Barat",
-  birthday: "1992-03-21",
-});
+// searchContactFullName(dataContacts, "agus mulyono");
+// searchContactFullName(dataContacts, "angga"); // tidak ditemukan.
+// createContact({
+//   name: "Budi Santoso",
+//   email: "budi@example.com",
+//   phone: "+62- 81234567899",
+//   address: "Cirebon, Jawa Barat",
+//   birthday: "1992-03-21",
+// });
