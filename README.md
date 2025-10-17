@@ -25,27 +25,9 @@ The design was inspired by:
 
 ## 🧩 Tech Stack
 
-- **Frontend:** HTML, CSS and JavaScript.
-- **Backend:** -
-- **Deployment:** Vercel.
-
-## 🎨 Design
-
-The design may evolve during development, but here are the initial wireframe and mockup:
-
-### Wireframe
-
-![wireframe](/images/design/wireframe.svg)
-
-### Mockup
-
-![design](/images/design/mockup.svg)
-
-## 🏁Closing
-
-I will continue improving this project as much as I can.  
-If you have suggestions or improvements, feel free to **fork** this repository and open a **pull request**.  
-Your contributions are highly appreciated — thank you! 🙏
+- Frontend: **HTML**, **CSS** and **JavaScript**.
+- Backend: -
+- Deployment: **Vercel**.
 
 | social                                                                                                      | Links                                                                                                                                 |
 | ----------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |

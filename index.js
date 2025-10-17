@@ -42,7 +42,7 @@ let dataContacts = [
       zipCode: "45456",
       country: "Indonesia",
     },
-    birthday: "1997-04-13",
+    birthday: new Date("1997-04-13"),
   },
   {
     id: 4,
@@ -57,7 +57,7 @@ let dataContacts = [
       zipCode: "45167",
       country: "Indonesia",
     },
-    birthday: "2001-02-20",
+    birthday: new Date("2001-02-20"),
   },
 ];
 
