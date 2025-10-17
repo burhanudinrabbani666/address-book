@@ -67,7 +67,10 @@ function displayContacts(contacts) {
 👤 ${contact.name}
 📧 ${contact.email}
 📞 ${contact.phone}
-📌 ${contact.address}
+📌 Address:
+      🏠 ${contact.address.street}, ${contact.address.streetDetails}
+      🏙️ ${contact.address.subDistrict}, ${contact.address.city},${contact.address.zipCode}
+      🌐 ${contact.address.country}
 🎂 ${contact.birthday}
 `);
   }
@@ -79,10 +82,9 @@ function searchContactFullName(contacts, keyword) {
   );
 
   if (foundContact.length > 0) {
-    console.log("✅ pencarian berhasil\n");
-    displayContacts(foundContact); // function bisa dimasukan kefunction
+    displayContacts(foundContact);
   } else {
-    console.log("❎ kontak tidak ditemukan!");
+    console.log("contact not found!");
   }
 
   return foundContact;
@@ -102,10 +104,19 @@ function createContact(newContact) {
 displayContacts(dataContacts);
 // searchContactFullName(dataContacts, "agus mulyono");
 // searchContactFullName(dataContacts, "angga"); // tidak ditemukan.
-// createContact({
-//   name: "Budi Santoso",
-//   email: "budi@example.com",
-//   phone: "+62- 81234567899",
-//   address: "Cirebon, Jawa Barat",
-//   birthday: "1992-03-21",
-// });
+createContact({
+  name: "Budi Santoso",
+  email: "budi@example.com",
+  phone: "+62- 81234567899",
+  address: {
+    street: "Jl mawar No.5",
+    streetDetails: "Perumahan Mawar Indah",
+    subDistrict: "Mawar Merah",
+    city: "Tangerang",
+    zipCode: "54567",
+    country: "Indonesia",
+  },
+  birthday: "1992-03-21",
+});
+
+function deleteContact(contacts, idTarget) {}
