@@ -1,88 +1,59 @@
-// Spread Operator
-const number = [1, 2, 3, 4, 5];
-const continuedNumbers = [...number, 6, 7, 8, 9];
+// array literals
+const numbers = [1, 2, 3, 4, 5];
+const continuedNumbers = [...numbers, 6, 7, 8, 9];
 console.log(continuedNumbers);
 
+// object literals
 const animal = {
-  name: "po",
-  species: "bear",
+  name: "Jhoni",
+  species: "cat",
 };
-
-const updateAnimal = {
+const newData = {
   ...animal,
-  species: "Fish", // menumpuk data sebelumnya.
-  color: "white",
+  species: "dog", // can change data in object
+  color: "brown",
 };
+console.log(newData);
 
-// bisa buat bikin function edit
-console.log(updateAnimal);
+//  array of object
 
-// spread array of object
-let leadersBudur = [
+let dataContacts = [
   {
-    id: 1,
-    Name: "Nani",
-    Age: 40,
-    Gender: "Woman",
+    name: "bani",
+    age: "23",
+    phone: "+62-823-4567-8999",
   },
   {
-    id: 2,
-    Name: "Dayat",
-    Age: 30,
-    Gender: "Man",
+    name: "nico",
+    age: "25",
+    phone: "+62-123-4567-8999",
   },
 ];
 
-// bisa buat function addContact
-const updateLeaderBlockKarangwangi = [
-  ...leadersBudur,
+dataContacts = [
+  //tidak perlu deklarasi karena menggunak variable let lagi
+  ...dataContacts,
   {
-    id: 3,
-    Name: "Rivai",
-    Age: 40,
-    Gender: "Man",
+    name: "agus",
+    age: "24",
+    phone: "+62-321-4321-6543",
   },
 ];
-console.log(updateLeaderBlockKarangwangi);
 
-function addleaderBudur(leader) {
-  const newId =
-    leadersBudur.length > 0 ? leadersBudur[leadersBudur.length - 1].id + 1 : 1;
+console.log(dataContacts);
 
-  const newLeader = { id: newId, ...leader };
-  leadersBudur = [...leadersBudur, newLeader]; // pakai [] menambahkan object dalam aray
-
-  console.log("✅ Add leader Success");
-  console.log(leadersBudur);
-}
-
-addleaderBudur({
-  name: "Bani",
-  Age: 22,
-  Gender: "Man",
-});
-
-function horizonLine(title) {
-  console.log(`----------------${title}------------------`);
-}
-
-horizonLine("Rest Parameter");
-// Rest Parameter
-
+// Rest parameter
 const person = {
-  fullname: "burhanudin rabbani",
-  role: "jungler",
+  fullName: "burhanudin rabbani",
   age: "22",
+  role: "jungler",
 };
 
-const { fullname, ...personDetail } = person;
-console.log(fullname);
+const { age, ...personDetail } = person; // menghilangkan age
 console.log(personDetail);
 
+//reduce
 function sum(...numbers) {
   return numbers.reduce((acc, curr) => acc + curr, 0);
-}
+} // .reduce artinya mengakumulasi. menjumlahkan semua nilai dalam array
 console.log(sum(1, 2, 3, 4, 5)); // 15
-
-horizonLine("JavaScript Global");
-//string

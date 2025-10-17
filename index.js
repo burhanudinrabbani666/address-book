@@ -18,7 +18,7 @@ let dataContacts = [
     id: 2,
     name: "Dana Agung",
     email: "dana@exammple.com",
-    phone: "+62- 812-3456-7891",
+    phone: "+62-812-3456-7891",
     address: {
       street: "Jl. Kasab No.3",
       streetDetails: "Babakan",
@@ -68,9 +68,9 @@ function displayContacts(contacts) {
 📧 ${contact.email}
 📞 ${contact.phone}
 📌 Address:
-      🏠 ${contact.address.street}, ${contact.address.streetDetails}
-      🏙️ ${contact.address.subDistrict}, ${contact.address.city},${contact.address.zipCode}
-      🌐 ${contact.address.country}
+    🏠 ${contact.address.street}, ${contact.address.streetDetails}
+    🏙️ ${contact.address.subDistrict}, ${contact.address.city},${contact.address.zipCode}
+    🌐 ${contact.address.country}
 🎂 ${contact.birthday}
 `);
   }
