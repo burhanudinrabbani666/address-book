@@ -76,6 +76,22 @@ function displayContacts(contacts) {
   }
 }
 
+function displayContact(contact, id) {
+  const displayContactById = contact.find((item) => item.id === id);
+  if (displayContactById) {
+    console.log(`
+👤 ${displayContactById.name},
+📧 ${displayContactById.email},
+📞 ${displayContactById.phone},
+📌 Address:
+    🏠 ${displayContactById.address.street}, ${displayContactById.address.streetDetails},
+    🏙️ ${displayContactById.address.subDistrict}, ${displayContactById.address.city},${displayContactById.address.zipCode},
+    🌐 ${displayContactById.address.country},
+🎂 ${displayContactById.birthday}
+`);
+  }
+}
+
 function searchContactFullName(contacts, keyword) {
   const foundContact = contacts.filter((contact) =>
     contact.name.toLowerCase().includes(keyword.toLowerCase())
@@ -96,7 +112,7 @@ function createContact(newContact) {
 
   const contact = { id: newId, ...newContact };
 
-  // Perbarui dataContacts dengan versi baru
+  // update new data
   dataContacts = [...dataContacts, contact];
   displayContacts(dataContacts);
 }
@@ -130,3 +146,6 @@ function deleteContact(contacts, id) {
 //   },
 //   birthday: "1992-03-21",
 // });
+
+// display spesific contact
+// displayContact(dataContacts, 1);

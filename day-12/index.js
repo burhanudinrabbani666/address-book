@@ -122,12 +122,12 @@ function addData(newName, newPhone) {
   validatePhone(newPhone);
 }
 
-addData(`burhanudin`, `123`); */
+addData(`burhanudin`, `123`); 
 
 //split
 
 const dateString = `20-12-2025`;
-const dateArray = dateString.split(`-`);
+const dateArray = dateString.split(`, `);
 console.log(dateArray);
 
 const charcaterString = `bear, cat, virgin`;
@@ -139,3 +139,30 @@ console.log(charctersArray);
 for (let character of charctersArray) {
   console.log(`A message to ${character}`);
 }
+
+const charctersArraySplit = charcaterString.split(", ", 1); // only bear
+console.log(charctersArraySplit);
+*/
+
+// Number
+
+const age = 30;
+
+console.log(age.toString()); // "30"
+console.log(age.toString(2)); // binary number
+
+//to FIxed
+
+const num = 3.14;
+
+console.log(num.toFixed(1)); // 3.1
+console.log(Math.trunc(num)); // 3
+console.log(Math.floor(num)); // 3
+console.log(Math.ceil(num)); // 4
+console.log(Math.round(num)); // 3
+
+// parseInt and parseFloat
+
+const run = "100km";
+
+console.log(parseInt(run)); // output 100
