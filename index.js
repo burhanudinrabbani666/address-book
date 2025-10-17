@@ -100,23 +100,33 @@ function createContact(newContact) {
   dataContacts = [...dataContacts, contact];
   displayContacts(dataContacts);
 }
+function deleteContact(contacts, id) {
+  const deleteContactData = contacts.filter((item) => item.id !== id);
 
-displayContacts(dataContacts);
+  return deleteContactData;
+}
+
+// test delete contact
+// dataContacts = deleteContact(dataContacts, 1);
+// console.log(dataContacts);
+
+// displayContacts(dataContacts);
+
+// searchContactFullName(dataContacts, "nico");
 // searchContactFullName(dataContacts, "agus mulyono");
 // searchContactFullName(dataContacts, "angga"); // tidak ditemukan.
-createContact({
-  name: "Budi Santoso",
-  email: "budi@example.com",
-  phone: "+62- 81234567899",
-  address: {
-    street: "Jl mawar No.5",
-    streetDetails: "Perumahan Mawar Indah",
-    subDistrict: "Mawar Merah",
-    city: "Tangerang",
-    zipCode: "54567",
-    country: "Indonesia",
-  },
-  birthday: "1992-03-21",
-});
 
-function deleteContact(contacts, idTarget) {}
+// createContact({
+//   name: "Budi Santoso",
+//   email: "budi@example.com",
+//   phone: "+62- 81234567899",
+//   address: {
+//     street: "Jl mawar No.5",
+//     streetDetails: "Perumahan Mawar Indah",
+//     subDistrict: "Mawar Merah",
+//     city: "Tangerang",
+//     zipCode: "54567",
+//     country: "Indonesia",
+//   },
+//   birthday: "1992-03-21",
+// });
