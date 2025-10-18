@@ -1,12 +1,6 @@
-console.log(this); // Which means this will be the window in a browser context.
+// console.log(this);
+console.log(`Day 14`);
 
-const car = {
-  maker: "tesla",
-  model: "Model X",
+const contentElement = document.getElementById(`content`);
 
-  drive() {
-    console.log(`driving a ${this.maker} ${this.model} car!`);
-  },
-};
-
-car.drive();
+contentElement.innerHTML = "<h1 id=`example'>Example</h1> ";
