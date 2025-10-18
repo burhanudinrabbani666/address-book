@@ -63,47 +63,41 @@ let dataContacts = [
 
 function displayContacts(contacts) {
   for (let contact of contacts) {
-    console.log(`
-👤 ${contact.name}
-📧 ${contact.email}
-📞 ${contact.phone}
+    renderContact(contact);
+  }
+}
+
+function displayContactById(contacts, id) {
+  const displayContactById = contacts.find((contact) => contact.id === id);
+  if (!contacts) return null;
+
+  renderContact(displayContactById);
+}
+
+function renderContact(contact) {
+  console.log(`
+👤 ${contact.name},
+📧 ${contact.email},
+📞 ${contact.phone},
 📌 Address:
-    🏠 ${contact.address.street}, ${contact.address.streetDetails}
-    🏙️ ${contact.address.subDistrict}, ${contact.address.city},${contact.address.zipCode}
-    🌐 ${contact.address.country}
+    🏠 ${contact.address.street}, ${contact.address.streetDetails},
+    🏙️ ${contact.address.subDistrict}, ${contact.address.city},${contact.address.zipCode},
+    🌐 ${contact.address.country},
 🎂 ${contact.birthday}
 `);
-  }
 }
 
-function displayContact(contact, id) {
-  const displayContactById = contact.find((item) => item.id === id);
-  if (displayContactById) {
-    console.log(`
-👤 ${displayContactById.name},
-📧 ${displayContactById.email},
-📞 ${displayContactById.phone},
-📌 Address:
-    🏠 ${displayContactById.address.street}, ${displayContactById.address.streetDetails},
-    🏙️ ${displayContactById.address.subDistrict}, ${displayContactById.address.city},${displayContactById.address.zipCode},
-    🌐 ${displayContactById.address.country},
-🎂 ${displayContactById.birthday}
-`);
-  }
-}
-
-function searchContactFullName(contacts, keyword) {
-  const foundContact = contacts.filter((contact) =>
+function searchContactsByName(contacts, keyword) {
+  const foundContacts = contacts.filter((contact) =>
     contact.name.toLowerCase().includes(keyword.toLowerCase())
   );
 
-  if (foundContact.length > 0) {
-    displayContacts(foundContact);
-  } else {
-    console.log("contact not found!");
+  if (foundContacts <= 0) {
+    console.log(`data not yet available `);
+    return null;
   }
 
-  return foundContact;
+  return foundContacts;
 }
 
 function createContact(newContact) {
@@ -117,19 +111,19 @@ function createContact(newContact) {
 }
 
 function deleteContact(contacts, id) {
-  const deleteContactData = contacts.filter((item) => item.id !== id);
+  const updatedDataContacts = contacts.filter((item) => item.id !== id);
 
-  return deleteContactData;
+  dataContacts = updatedDataContacts;
 }
 
-function editContact(contacts, id, newDataContact) {
-  const updateContacts = contacts.map((contact) => {
+function editContact(contacts, id, newContactData) {
+  const updatedContacts = contacts.map((contact) => {
     if (contact.id === id) {
-      return { ...contact, ...newDataContact };
+      return { ...contact, ...newContactData };
     }
     return contact;
   });
-  return updateContacts;
+  dataContacts = updatedDataContacts;
 }
 
 // const editContactById = editContact(dataContacts, 1, { email: "agusagus@exm" });
