@@ -122,6 +122,20 @@ function deleteContact(contacts, id) {
   return deleteContactData;
 }
 
+function editContact(contacts, id, data) {
+  const updateContacts = contacts.map((contact) => {
+    if (contact.id === id) {
+      return { ...contact, ...data };
+    }
+    return contact;
+  });
+  return updateContacts;
+}
+
+// const editContactById = editContact(dataContacts, 1, { email: "agusagus@exm" });
+// const newDataContact = editContactById;
+// displayContact(newDataContact, 1);
+
 // test delete contact
 // dataContacts = deleteContact(dataContacts, 1);
 // console.log(dataContacts);
@@ -149,3 +163,13 @@ function deleteContact(contacts, id) {
 
 // display spesific contact
 // displayContact(dataContacts, 1);
+
+// const stringifiedDataContacts = JSON.stringify(dataContacts);
+// localStorage.setItem("data contacts", stringifiedDataContacts);
+
+//Local data Storage
+const contactsFromLocalStorage = localStorage.getItem("data contacts");
+
+const parsedContacts = JSON.parse(contactsFromLocalStorage);
+
+console.log(parsedContacts);
