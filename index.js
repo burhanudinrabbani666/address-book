@@ -114,8 +114,8 @@ function createContact(newContact) {
 
   // update new data
   dataContacts = [...dataContacts, contact];
-  displayContacts(dataContacts);
 }
+
 function deleteContact(contacts, id) {
   const deleteContactData = contacts.filter((item) => item.id !== id);
 
@@ -138,8 +138,6 @@ function editContact(contacts, id, data) {
 
 // test delete contact
 // dataContacts = deleteContact(dataContacts, 1);
-// console.log(dataContacts);
-
 // displayContacts(dataContacts);
 
 // searchContactFullName(dataContacts, "nico");
@@ -160,6 +158,7 @@ function editContact(contacts, id, data) {
 //   },
 //   birthday: "1992-03-21",
 // });
+// displayContacts(dataContacts);
 
 // display spesific contact
 // displayContact(dataContacts, 1);
@@ -168,8 +167,8 @@ function editContact(contacts, id, data) {
 // localStorage.setItem("data contacts", stringifiedDataContacts);
 
 //Local data Storage
-const contactsFromLocalStorage = localStorage.getItem("data contacts");
+// const contactsFromLocalStorage = localStorage.getItem("data contacts");
 
-const parsedContacts = JSON.parse(contactsFromLocalStorage);
+// const parsedContacts = JSON.parse(contactsFromLocalStorage);
 
-console.log(parsedContacts);
+// console.log(parsedContacts);
