@@ -122,10 +122,10 @@ function deleteContact(contacts, id) {
   return deleteContactData;
 }
 
-function editContact(contacts, id, data) {
+function editContact(contacts, id, newDataContact) {
   const updateContacts = contacts.map((contact) => {
     if (contact.id === id) {
-      return { ...contact, ...data };
+      return { ...contact, ...newDataContact };
     }
     return contact;
   });
