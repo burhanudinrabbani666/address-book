@@ -62,9 +62,11 @@ let dataContacts = [
 ];
 
 function displayContacts(contacts) {
-  for (let contact of contacts) {
-    renderContact(contact);
-  }
+  const appElement = document.getElementById("app");
+
+  appElement.innerHTML = `<ul id="contacts" class="space-y-4">
+  ${contacts.map((contact) => renderContact(contact)).join("")}
+  </ul>`;
 }
 
 function displayContactById(contacts, id) {
@@ -75,16 +77,16 @@ function displayContactById(contacts, id) {
 }
 
 function renderContact(contact) {
-  console.log(`
-👤 ${contact.name},
-📧 ${contact.email},
-📞 ${contact.phone},
-📌 Address:
-    🏠 ${contact.address.street}, ${contact.address.streetDetails},
-    🏙️ ${contact.address.subDistrict}, ${contact.address.city},${contact.address.zipCode},
-    🌐 ${contact.address.country},
-🎂 ${contact.birthday}
-`);
+  return `<li class="p-2 border border-black rounded">
+<h3 class="font-bold text-lg">👤 ${contact.name} </h3>
+<p>📧 ${contact.email} </p>
+<p>📞 ${contact.phone} </p>
+<p>📌 <strong>Address:</strong></p>
+    <p>🏠 ${contact.address.street}, ${contact.address.streetDetails}</p>
+    <p>🏙️ ${contact.address.subDistrict}, ${contact.address.city},${contact.address.zipCode},</p>
+    <p>🌐 ${contact.address.country},</p>
+<p>🎂 ${contact.birthday}</p>
+</li>`;
 }
 
 function searchContactsByName(contacts, keyword) {
@@ -126,43 +128,4 @@ function editContact(contacts, id, newContactData) {
   dataContacts = updatedDataContacts;
 }
 
-// const editContactById = editContact(dataContacts, 1, { email: "agusagus@exm" });
-// const newDataContact = editContactById;
-// displayContact(newDataContact, 1);
-
-// test delete contact
-// dataContacts = deleteContact(dataContacts, 1);
-// displayContacts(dataContacts);
-
-// searchContactFullName(dataContacts, "nico");
-// searchContactFullName(dataContacts, "agus mulyono");
-// searchContactFullName(dataContacts, "angga"); // tidak ditemukan.
-
-// createContact({
-//   name: "Budi Santoso",
-//   email: "budi@example.com",
-//   phone: "+62- 81234567899",
-//   address: {
-//     street: "Jl mawar No.5",
-//     streetDetails: "Perumahan Mawar Indah",
-//     subDistrict: "Mawar Merah",
-//     city: "Tangerang",
-//     zipCode: "54567",
-//     country: "Indonesia",
-//   },
-//   birthday: "1992-03-21",
-// });
-// displayContacts(dataContacts);
-
-// display spesific contact
-// displayContact(dataContacts, 1);
-
-// const stringifiedDataContacts = JSON.stringify(dataContacts);
-// localStorage.setItem("data contacts", stringifiedDataContacts);
-
-//Local data Storage
-// const contactsFromLocalStorage = localStorage.getItem("data contacts");
-
-// const parsedContacts = JSON.parse(contactsFromLocalStorage);
-
-// console.log(parsedContacts);
+displayContacts(dataContacts);
