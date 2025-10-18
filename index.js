@@ -63,47 +63,42 @@ let dataContacts = [
 
 function displayContacts(contacts) {
   for (let contact of contacts) {
-    console.log(`
-👤 ${contact.name}
-📧 ${contact.email}
-📞 ${contact.phone}
+    renderContact(contact);
+  }
+}
+
+function displayContactById(contacts, id) {
+  const contact = contacts.find((contact) => contact.id === id);
+
+  if (!contact) return null;
+
+  renderContact(contact);
+}
+
+function renderContact(contact) {
+  console.log(`
+👤 ${contact.name},
+📧 ${contact.email},
+📞 ${contact.phone},
 📌 Address:
-    🏠 ${contact.address.street}, ${contact.address.streetDetails}
-    🏙️ ${contact.address.subDistrict}, ${contact.address.city},${contact.address.zipCode}
-    🌐 ${contact.address.country}
+    🏠 ${contact.address.street}, ${contact.address.streetDetails},
+    🏙️ ${contact.address.subDistrict}, ${contact.address.city},${contact.address.zipCode},
+    🌐 ${contact.address.country},
 🎂 ${contact.birthday}
 `);
-  }
 }
 
-function displayContact(contact, id) {
-  const displayContactById = contact.find((item) => item.id === id);
-  if (displayContactById) {
-    console.log(`
-👤 ${displayContactById.name},
-📧 ${displayContactById.email},
-📞 ${displayContactById.phone},
-📌 Address:
-    🏠 ${displayContactById.address.street}, ${displayContactById.address.streetDetails},
-    🏙️ ${displayContactById.address.subDistrict}, ${displayContactById.address.city},${displayContactById.address.zipCode},
-    🌐 ${displayContactById.address.country},
-🎂 ${displayContactById.birthday}
-`);
-  }
-}
-
-function searchContactFullName(contacts, keyword) {
-  const foundContact = contacts.filter((contact) =>
+function searchContactsByName(contacts, keyword) {
+  const foundContacts = contacts.filter((contact) =>
     contact.name.toLowerCase().includes(keyword.toLowerCase())
   );
 
-  if (foundContact.length > 0) {
-    displayContacts(foundContact);
-  } else {
-    console.log("contact not found!");
+  if (foundContacts.length <= 0) {
+    console.log("Contact not found!");
+    return null;
   }
 
-  return foundContact;
+  return foundContacts;
 }
 
 function createContact(newContact) {
@@ -112,25 +107,28 @@ function createContact(newContact) {
 
   const contact = { id: newId, ...newContact };
 
-  // update new data
   dataContacts = [...dataContacts, contact];
 }
 
 function deleteContact(contacts, id) {
-  const deleteContactData = contacts.filter((item) => item.id !== id);
+  const updatedContacts = contacts.filter((item) => item.id !== id);
 
-  return deleteContactData;
+  dataContacts = updatedContacts;
 }
 
-function editContact(contacts, id, data) {
-  const updateContacts = contacts.map((contact) => {
+// TODO: Destructure newContactData
+function editContact(contacts, id, newContactData) {
+  const updatedContacts = contacts.map((contact) => {
     if (contact.id === id) {
-      return { ...contact, ...data };
+      return { ...contact, ...newContactData };
     }
     return contact;
   });
-  return updateContacts;
+
+  dataContacts = updatedContacts;
 }
+
+// -----------------------------------------------
 
 // const editContactById = editContact(dataContacts, 1, { email: "agusagus@exm" });
 // const newDataContact = editContactById;
@@ -140,9 +138,9 @@ function editContact(contacts, id, data) {
 // dataContacts = deleteContact(dataContacts, 1);
 // displayContacts(dataContacts);
 
-// searchContactFullName(dataContacts, "nico");
 // searchContactFullName(dataContacts, "agus mulyono");
 // searchContactFullName(dataContacts, "angga"); // tidak ditemukan.
+// searchContactFullName(dataContacts, "nico");
 
 // createContact({
 //   name: "Budi Santoso",
