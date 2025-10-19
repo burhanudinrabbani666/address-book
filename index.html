@@ -6,11 +6,48 @@
     <title>Address book</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
-  <body class="p-4 space-y-8">
-    <h1 class="text-5xl font-bold">Address Book</h1>
-    <main id="app" class="max-w-xl">
-      <!--  -->
-    </main>
-    <script src="/index.js"></script>
+  <body class="">
+    <nav class="flex flex-col max-w-40 gap-5 m-4">
+      <h1 class="flex justify-center items-center justify">Bani</h1>
+
+      <div
+        id="dev-list"
+        class="max-w-40 h-24 flex flex-col justify-center items-center gap-2 mt-7"
+      >
+        <div id="add-contact" class="w-38 h-7 rounded-xl bg-fuchsia-700 py-4">
+          <div class="flex ml-5 items-center w-full h-full gap-2">
+            <figure>X</figure>
+            <a href="#" class="font-bold text-neutral-100">Add Contact </a>
+          </div>
+        </div>
+
+        <div
+          id="contact"
+          class="w-38 h-7 rounded-xl -black bg-neutral-200 py-4"
+        >
+          <div class="flex ml-5 items-center w-full h-full gap-2">
+            <figure>X</figure>
+            <a href="#" class="font-semibold text-neutral-800">Contacts </a>
+          </div>
+        </div>
+      </div>
+
+      <div
+        id="user list"
+        class="max-w-40 h-20 flex flex-col justify-center items-center gap-2"
+      >
+        <div id="group" class="w-38 h-7 flex justify-between px-2">
+          <p class="font-semibold">Groups</p>
+          <figure>+</figure>
+        </div>
+        <div class="w-38 h-7 rounded-xl -black py-4">
+          <div class="flex ml-5 items-center w-full h-full gap-2">
+            <figure>X</figure>
+            <a href="" class="">Bearmentor</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- <script src="/index.js"></script> -->
   </body>
 </html>
