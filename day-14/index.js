@@ -1,6 +1,6 @@
 // console.log(this);
-console.log(`Day 14`);
 
-const contentElement = document.getElementById(`content`);
+const contentElement = document.getElementById("content");
 
-contentElement.innerHTML = "<h1 id=`example'>Example</h1> ";
+console.log(contentElement);
+contentElement.innerHTML = "<h1> Day 14 </h1>";

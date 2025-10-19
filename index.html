@@ -6,15 +6,18 @@
     <title>Address book</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
-  <body class="">
-    <nav class="flex flex-col max-w-40 gap-5 m-4">
-      <h1 class="flex justify-center items-center justify">Bani</h1>
+  <body class="flex">
+    <nav class="flex flex-col max-w-40 gap-5 m-4 -black">
+      <h1 class="flex justify-center items-center justify -black h-20">Bani</h1>
 
       <div
         id="dev-list"
-        class="max-w-40 h-24 flex flex-col justify-center items-center gap-2 mt-7"
+        class="max-w-40 h-24 flex flex-col justify-center items-center gap-2"
       >
-        <div id="add-contact" class="w-38 h-7 rounded-xl bg-fuchsia-700 py-4">
+        <div
+          id="add-contact"
+          class="w-38 h-7 rounded-xl bg-fuchsia-700 py-4 hover:bg-fuchsia-800 transition duration-150"
+        >
           <div class="flex ml-5 items-center w-full h-full gap-2">
             <figure>X</figure>
             <a href="#" class="font-bold text-neutral-100">Add Contact </a>
@@ -48,6 +51,20 @@
         </div>
       </div>
     </nav>
-    <!-- <script src="/index.js"></script> -->
+
+    <main class="flex flex-col w-full gap-5 m-4 -black">
+      <section
+        id="search-top"
+        class="justify-center items-center justify -black h-20"
+      ></section>
+      <section
+        id="contacts-section"
+        class="w-full h-auto -black flex flex-col gap-4 rounded-xl py-4 bg-fuchsia-200"
+      >
+        <h2 class="text-4xl px-3 mt-2 font-bold">Contacts</h2>
+        <section id="main-contact"></section>
+      </section>
+    </main>
+    <script src="/index.js"></script>
   </body>
 </html>

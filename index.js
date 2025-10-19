@@ -62,9 +62,9 @@ let dataContacts = [
 ];
 
 function displayContacts(contacts) {
-  const appElement = document.getElementById("app");
+  const appElement = document.getElementById("main-contact");
 
-  appElement.innerHTML = `<ul id="contacts" class="space-y-4">
+  appElement.innerHTML = `<ul id="contacts" class="space-y-1 px-3">
   ${contacts.map((contact) => renderContact(contact)).join("")}
   </ul>`;
 }
@@ -77,15 +77,11 @@ function displayContactById(contacts, id) {
 }
 
 function renderContact(contact) {
-  return `<li class="p-2 border border-black rounded">
-<h3 class="font-bold text-lg">👤 ${contact.name} </h3>
-<p>📧 ${contact.email} </p>
-<p>📞 ${contact.phone} </p>
-<p>📌 <strong>Address:</strong></p>
-    <p>🏠 ${contact.address.street}, ${contact.address.streetDetails}</p>
-    <p>🏙️ ${contact.address.subDistrict}, ${contact.address.city},${contact.address.zipCode},</p>
-    <p>🌐 ${contact.address.country},</p>
-<p>🎂 ${contact.birthday}</p>
+  return `<li class="py-4 px-2  rounded flex justify-between w-full bg-neutral-100">
+<h3 class="font-bold text-lg w-50">👤 ${contact.name} </h3>
+<div class="inline-block w-50">📧 ${contact.email}</div> 
+<div class="inline-block w-50">📞 ${contact.phone}</div> 
+<div class="inline-block w-50"> Hallo ini setting</div>
 </li>`;
 }
 
@@ -129,3 +125,9 @@ function editContact(contacts, id, newContactData) {
 }
 
 displayContacts(dataContacts);
+
+// 📌 Address:
+//     🏠 ${contact.address.street}, ${contact.address.streetDetails}
+//     🏙️ ${contact.address.subDistrict}, ${contact.address.city},${contact.address.zipCode},
+//     🌐 ${contact.address.country},
+// 🎂 ${contact.birthday}
