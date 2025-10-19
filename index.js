@@ -12,6 +12,7 @@ let dataContacts = [
       zipCode: "45272",
       country: "Indonesia",
     },
+    company: "PT SIMNU Majalengka",
     birthday: new Date("2000-10-13"),
   },
   {
@@ -27,6 +28,7 @@ let dataContacts = [
       zipCode: "45167",
       country: "Indonesia",
     },
+    company: "PT Kasab Steel",
     birthday: new Date("2021-01-03"),
   },
   {
@@ -42,6 +44,7 @@ let dataContacts = [
       zipCode: "45456",
       country: "Indonesia",
     },
+    company: "PT Nabati Majalengka",
     birthday: new Date("1997-04-13"),
   },
   {
@@ -57,6 +60,7 @@ let dataContacts = [
       zipCode: "45167",
       country: "Indonesia",
     },
+    company: "PT Kobe",
     birthday: new Date("2001-02-20"),
   },
 ];
@@ -64,7 +68,7 @@ let dataContacts = [
 function displayContacts(contacts) {
   const appElement = document.getElementById("main-contact");
 
-  appElement.innerHTML = `<ul id="contacts" class="space-y-1 px-3">
+  appElement.innerHTML = `<ul id="contacts">
   ${contacts.map((contact) => renderContact(contact)).join("")}
   </ul>`;
 }
@@ -77,11 +81,16 @@ function displayContactById(contacts, id) {
 }
 
 function renderContact(contact) {
-  return `<li class="py-4 px-2  rounded flex justify-between w-full bg-neutral-100">
-<h3 class="font-bold text-lg w-50">👤 ${contact.name} </h3>
-<div class="inline-block w-50">📧 ${contact.email}</div> 
-<div class="inline-block w-50">📞 ${contact.phone}</div> 
+  return `<li>
+  <a href="" class="py-5 px-2 flex justify-between w-full border-b border-neutral-300 bg hover:bg-neutral-200 transition duration-150" >
+  <h3 class="font-bold text-lg w-50"> ${contact.name} </h3>
+<div class="inline-block w-50 "> ${contact.email}</div> 
+<div class="inline-block w-50 "> ${contact.phone}</div> 
+<div class="inline-block w-50 "> ${contact.company}</div>
+<div class="inline-block w-50 ">Group</div> 
 <div class="inline-block w-50"> Hallo ini setting</div>
+  </a>
+
 </li>`;
 }
 
