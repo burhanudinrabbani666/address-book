@@ -81,15 +81,16 @@ function displayContactById(contacts, id) {
 }
 
 function renderContact(contact) {
-  return `<li>
-  <a href="" class="py-5 px-2 flex justify-between w-full border-b border-neutral-300 bg hover:bg-neutral-200 transition duration-150" >
-  <h3 class="font-bold text-lg w-50"> ${contact.name} </h3>
-<div class="inline-block w-50 "> ${contact.email}</div> 
-<div class="inline-block w-50 "> ${contact.phone}</div> 
-<div class="inline-block w-50 "> ${contact.company}</div>
-<div class="inline-block w-50 ">Group</div> 
-<div class="inline-block w-50"> Hallo ini setting</div>
-  </a>
+  return `<li class="py-5 px-2 flex justify-between w-full border-b border-neutral-300 bg hover:bg-neutral-300 transition duration-150">
+    <a href="/detail-contact/index.html" class="font-bold min-w-40"> ${contact.name} </a>
+    <p class="inline-block min-w-40 hover:text-blue-700"> ${contact.email}</p> 
+    <p class="inline-block min-w-40 hover:text-blue-700"> ${contact.phone}</p> 
+    <p class="inline-block min-w-40 "> ${contact.company}</p>
+    <div class=" flex flex-row gap-2 items-center ">
+      <a class="p-2 rounded-full hover:bg-neutral-200"> <img src="/images/icon/home-page/star.svg" alt="star"/></a>
+      <a href="/detail-contact/index.html" class="p-2 rounded-full hover:bg-neutral-200"> <img src="/images/icon/home-page/edit.svg" alt="edit"/></a> 
+      <a class="p-2 rounded-full hover:bg-neutral-200"> <img src="/images/icon/home-page/menu.svg" alt="menu"/></a>
+    </div>
 
 </li>`;
 }
@@ -130,7 +131,7 @@ function editContact(contacts, id, newContactData) {
     }
     return contact;
   });
-  dataContacts = updatedDataContacts;
+  dataContacts = updatedContacts;
 }
 
 displayContacts(dataContacts);

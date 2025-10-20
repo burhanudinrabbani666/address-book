@@ -3,15 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Address book</title>
+    <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body class="flex gap-5 text-base bg-neutral-100 text-neutral-800">
+  <body class="flex text-base bg-neutral-100">
     <nav class="flex flex-col max-w-40 gap-5 m-4 text-neutral-800">
-      <h1 class="mx-auto my-5">
-        <img src="/images/icon/home-page/Homie.svg" alt="logo" />
-      </h1>
+      <h1 class="flex justify-center items-center justify -black h-20">Bani</h1>
 
       <div
         id="dev-list"
@@ -19,7 +17,7 @@
       >
         <div
           id="add-contact"
-          class="w-38 h-7 rounded-4xl bg-indigo-500 py-5 hover:bg-indigo-900 transition duration-150"
+          class="w-38 h-7 rounded-4xl bg-fuchsia-700 py-5 hover:bg-fuchsia-800 transition duration-150"
         >
           <div class="flex ml-5 items-center w-full h-full gap-2">
             <figure>
@@ -58,34 +56,5 @@
         </div>
       </div>
     </nav>
-
-    <main class="flex flex-col w-full gap-5 m-4 -black">
-      <section
-        id="search-top"
-        class="w-full h-auto -black flex justify-between gap-4 rounded-xl py-5 px-7"
-      >
-        <input
-          type="text"
-          class="border border-neutral-400 py-1 w-xl rounded-full indent-4"
-          placeholder="Search"
-        />
-        <div class="inline-block w-40 border"></div>
-      </section>
-      <section
-        id="contacts-section"
-        class="w-full h-auto -black flex flex-col gap-4 rounded-xl py-5 bg-neutral-200 px-7"
-      >
-        <h2 class="text-4xl px-3 mt-2 mb-6 font-bold">Contacts</h2>
-        <section class="px-2 rounded flex justify-between w-full">
-          <div class="inline-block w-20">Name</div>
-          <div class="inline-block w-20">Email</div>
-          <div class="inline-block w-20">Phone</div>
-          <div class="inline-block w-20">Company</div>
-          <div class="inline-block w-20">Setting</div>
-        </section>
-        <section id="main-contact"></section>
-      </section>
-    </main>
-    <script src="/index.js"></script>
   </body>
 </html>
