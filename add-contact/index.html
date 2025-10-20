@@ -7,7 +7,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body class="flex gap-10 text-sm bg-neutral-100 text-neutral-800">
+  <body class="flex gap-10 text-sm bg-neutral-50 text-neutral-800">
     <nav class="flex flex-col max-w-40 gap-1 m-4">
       <a href="#" class="mx-auto my-3">
         <img src="/images/icon/home-page/Homie.svg" alt="logo" />
@@ -73,19 +73,138 @@
       >
         <input
           type="text"
-          class="border border-neutral-400 py-1 w-xl rounded-full indent-4"
+          class="border border-neutral-400 py-1 w-3/4 rounded-full indent-4"
           placeholder="Search"
         />
         <div class="inline-block w-40 border"></div>
       </section>
       <section
         id="contacts-section"
-        class="max-w-xl h-auto -black flex flex-col gap-4 rounded-xl py-3 bg-neutral-200 px-7"
+        class="max-w-3/4 h-auto -black flex flex-col gap-7 rounded-xl py-3 bg-neutral-100 px-7"
       >
         <h2 class="text-3xl px-2 mb-4 font-bold">Add Contacts</h2>
-        <section>
-          <!-- form input data -->
+        <section id="name" class="flex gap-4">
+          <figure class="w-1/8 border border-black h-auto"></figure>
+          <div id="name-fields" class="w-full flex flex-col gap-1">
+            <p class="font-semibold">Name</p>
+            <input
+              type="text"
+              class="w-full py-2 border border-neutral-400 rounded-lg"
+            />
+          </div>
         </section>
+        <section id="other-data-name" class="h-auto flex justify-between gap-6">
+          <div id="left-fields" class="w-1/2 flex flex-col gap-2">
+            <div class="w-full flex flex-col gap-1">
+              <p class="font-semibold">Email</p>
+              <input
+                id="email-field"
+                type="text"
+                class="w-full py-2 border border-neutral-400 rounded-lg"
+              />
+            </div>
+            <div class="w-full flex flex-col gap-1">
+              <p class="font-semibold">Company Name</p>
+              <input
+                id="company-field"
+                type="text"
+                class="w-full py-2 border border-neutral-400 rounded-lg"
+              />
+            </div>
+            <div id="address-field" class="w-full flex flex-col gap-1">
+              <p class="font-semibold">Address</p>
+              <input
+                id="street-field"
+                type="text"
+                class="indent-2 w-full py-2 border border-neutral-400 rounded-lg"
+                placeholder="Street"
+              />
+            </div>
+            <div
+              id="address-detail"
+              class="grid grid-flow-col grid-rows-2 gap-4"
+            >
+              <div id="" class="w-full flex flex-col gap-1">
+                <input
+                  id="city-field"
+                  type="text"
+                  class="indent-2 w-full py-2 border border-neutral-400 rounded-lg"
+                  placeholder="city"
+                />
+              </div>
+              <div id="" class="w-full flex flex-col gap-1">
+                <input
+                  id="proviance-field"
+                  type="text"
+                  class="indent-2 w-full py-2 border border-neutral-400 rounded-lg"
+                  placeholder="proviance"
+                />
+              </div>
+              <div id="" class="w-full flex flex-col gap-1">
+                <input
+                  id="sub-district-field"
+                  type="text"
+                  class="indent-2 w-full py-2 border border-neutral-400 rounded-lg"
+                  placeholder="Sub District"
+                />
+              </div>
+              <div id="" class="w-full flex flex-col gap-1">
+                <input
+                  id="country-field"
+                  type="text"
+                  class="indent-2 w-full py-2 border border-neutral-400 rounded-lg"
+                  placeholder="Country"
+                />
+              </div>
+            </div>
+            <div id="" class="w-full flex flex-col gap-1">
+              <p class="font-semibold">Birthdate</p>
+              <input
+                type="text"
+                class="w-full py-2 border border-neutral-400 rounded-lg"
+              />
+            </div>
+          </div>
+          <div id="right-fields " class="w-1/2 flex flex-col gap-2">
+            <div class="w-full flex flex-col gap-1">
+              <p class="font-semibold">Phone</p>
+              <input
+                id="phone-field"
+                type="text"
+                class="w-full py-2 border border-neutral-400 rounded-lg"
+              />
+            </div>
+            <div class="w-full flex flex-col gap-1">
+              <p class="font-semibold">Job Title</p>
+              <input
+                id="job-title-field"
+                type="text"
+                class="w-full py-2 border border-neutral-400 rounded-lg"
+              />
+            </div>
+            <div class="w-full flex flex-col gap-1">
+              <p class="font-semibold">Personal Information</p>
+              <input
+                id="personal-field"
+                type="text"
+                class="w-full py-2 border border-neutral-400 rounded-lg"
+              />
+            </div>
+            <div class="w-full flex flex-col gap-1">
+              <p class="font-semibold">Website Url</p>
+              <input
+                id="website-field"
+                type="text"
+                class="w-full py-2 border border-neutral-400 rounded-lg"
+              />
+            </div>
+          </div>
+        </section>
+        <button
+          class="rounded-full w-38 h-auto py-3 bg-indigo-500 text-neutral-100 font-bold hover:bg-indigo-700 active:bg-indigo-900 active:shadow-xl active:shadow-grey-900"
+        >
+          Create Contact
+        </button>
       </section>
     </main>
   </body>
