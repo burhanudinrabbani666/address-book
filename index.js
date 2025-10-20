@@ -116,6 +116,7 @@ function createContact(newContact) {
 
   // update new data
   dataContacts = [...dataContacts, contact];
+  displayContacts(dataContacts);
 }
 
 function deleteContact(contacts, id) {
