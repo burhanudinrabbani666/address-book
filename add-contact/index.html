@@ -3,7 +3,90 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Add-contact</title>
+    <title>Homie | Add-contact</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body></body>
+  <body class="flex gap-10 text-sm bg-neutral-100 text-neutral-800">
+    <nav class="flex flex-col max-w-40 gap-1 m-4">
+      <a href="#" class="mx-auto my-3">
+        <img src="/images/icon/home-page/Homie.svg" alt="logo" />
+      </a>
+
+      <div
+        id="dev-list"
+        class="max-w-40 h-24 flex flex-col justify-center items-center gap-1"
+      >
+        <div
+          id="add-contact"
+          class="w-38 h-7 rounded-4xl py-5 bg-indigo-900 transition duration-150"
+        >
+          <div class="flex ml-5 items-center w-full h-full gap-2">
+            <figure>
+              <img src="/images/icon/home-page/plus.svg" alt="add-contact" />
+            </figure>
+            <a
+              href="/add-contact/index.html "
+              class="font-bold text-neutral-100"
+              >Add Contact
+            </a>
+          </div>
+        </div>
+
+        <div
+          id="contact"
+          class="w-38 h-7 rounded-4xl hover:bg-neutral-200 active:bg-neutral-300 py-5"
+        >
+          <div class="flex ml-5 items-center w-full h-full gap-2">
+            <figure>
+              <img src="/images/icon/home-page/contact.svg" alt="" />
+            </figure>
+            <a href="/index.html" class="font-semibold text-neutral-800"
+              >Contacts
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div
+        id="user list"
+        class="max-w-40 h-20 flex flex-col justify-center items-center gap-1"
+      >
+        <div id="group" class="w-38 h-7 flex justify-between px-2">
+          <p class="font-semibold">Groups</p>
+          <figure>+</figure>
+        </div>
+        <div class="w-38 h-7 rounded-xl -black py-5">
+          <div class="flex ml-5 items-center w-full h-full gap-2">
+            <figure>
+              <img src="/images/icon/home-page/bear.svg" alt="bear" />
+            </figure>
+            <a href="" class="">Bearmentor</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <main class="flex flex-col w-full gap-1 m-4 -black">
+      <section
+        id="search-top"
+        class="w-full h-auto -black flex justify-between gap-4 rounded-xl py-5"
+      >
+        <input
+          type="text"
+          class="border border-neutral-400 py-1 w-xl rounded-full indent-4"
+          placeholder="Search"
+        />
+        <div class="inline-block w-40 border"></div>
+      </section>
+      <section
+        id="contacts-section"
+        class="max-w-xl h-auto -black flex flex-col gap-4 rounded-xl py-3 bg-neutral-200 px-7"
+      >
+        <h2 class="text-3xl px-2 mb-4 font-bold">Add Contacts</h2>
+        <section>
+          <!-- form input data -->
+        </section>
+      </section>
+    </main>
+  </body>
 </html>

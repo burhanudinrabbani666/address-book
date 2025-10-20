@@ -81,7 +81,7 @@ function displayContactById(contacts, id) {
 }
 
 function renderContact(contact) {
-  return `<li class="py-5 px-2 flex justify-between w-full border-b border-neutral-300 bg hover:bg-neutral-300 transition duration-150">
+  return `<li class="py-3 px-2 flex justify-between w-full border-b border-neutral-300 bg hover:bg-neutral-300 transition duration-150">
     <a href="/detail-contact/index.html" class="font-bold min-w-40"> ${contact.name} </a>
     <p class="inline-block min-w-40 hover:text-blue-700"> ${contact.email}</p> 
     <p class="inline-block min-w-40 hover:text-blue-700"> ${contact.phone}</p> 
