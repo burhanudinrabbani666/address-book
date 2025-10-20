@@ -82,10 +82,10 @@ function displayContactById(contacts, id) {
 
 function renderContact(contact) {
   return `<li class="py-3 px-2 flex justify-between w-full border-b border-neutral-300 bg hover:bg-neutral-300 transition duration-150">
-    <a href="/detail-contact/index.html" class="font-bold min-w-40"> ${contact.name} </a>
-    <p class="inline-block min-w-40 hover:text-blue-700"> ${contact.email}</p> 
-    <p class="inline-block min-w-40 hover:text-blue-700"> ${contact.phone}</p> 
-    <p class="inline-block min-w-40 "> ${contact.company}</p>
+    <a href="/detail-contact/index.html" class="font-semibold min-w-40"> ${contact.name} </a>
+    <p class="inline-block min-w-40 text-neutral-600 hover:text-blue-700"> ${contact.email}</p> 
+    <p class="inline-block min-w-40 text-neutral-600 hover:text-blue-700"> ${contact.phone}</p> 
+    <p class="inline-block min-w-40 text-neutral-600 "> ${contact.company}</p>
     <div class=" flex flex-row gap-2 items-center ">
       <a class="p-2 rounded-full hover:bg-neutral-200"> <img src="/images/icon/home-page/star.svg" alt="star"/></a>
       <a href="/detail-contact/index.html" class="p-2 rounded-full hover:bg-neutral-200"> <img src="/images/icon/home-page/edit.svg" alt="edit"/></a> 
