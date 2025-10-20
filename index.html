@@ -4,24 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Homie</title>
-    <!-- Tailwind -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Google Font -->
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
-    </style>
-
-    <!-- style -->
   </head>
   <body
     class="flex gap-10 text-sm bg-neutral-50 text-neutral-800 p-2 font-[Inter]"
   >
     <!-- Navigation -->
     <nav class="flex flex-col max-w-40 gap-4 m-2">
-      <a href="#" class="mx-auto my-3">
-        <img src="/images/icon/home-page/Homie.svg" alt="logo" />
+      <a href="/" class="mx-auto my-3">
+        <img src="/images/icon/home-page/Homie.svg" alt="Logo" />
       </a>
 
       <div
@@ -36,10 +34,8 @@
             <figure>
               <img src="/images/icon/home-page/plus.svg" alt="add-contact" />
             </figure>
-            <a
-              href="/add-contact/index.html "
-              class="font-bold text-neutral-100"
-              >Add Contact
+            <a href="/add-contact" class="font-bold text-neutral-100">
+              Add Contact
             </a>
           </div>
         </div>
@@ -61,7 +57,7 @@
             <figure>
               <img src="/images/icon/home-page/star-gold-1.svg" alt="" />
             </figure>
-            <a href="#" class="font-semibold text-neutral-800">Favorit </a>
+            <a href="#" class="font-semibold text-neutral-800">Favorites </a>
           </div>
         </div>
 
@@ -99,18 +95,16 @@
       <!-- Top section -->
       <section
         id="search-top"
-        class="w-full h-auto -black flex justify-between gap-4 rounded-xl py-5"
+        class="w-full h-auto flex justify-between gap-4 rounded-xl py-5"
       >
-        <input
-          type="text"
-          class="border border-neutral-400 py-1 w-3/4 rounded-full indent-4"
-          placeholder="Search"
-        />
-        <div class="inline-block flex px-2">
-          <a href="#" class="mx-auto flex items-center"
-            ><img src="/images/icon/home-page/setting.svg" alt="setting"
-          /></a>
-        </div>
+        <form>
+          <input
+            name="q"
+            type="text"
+            class="w-full border border-neutral-400 py-1 rounded-full indent-4"
+            placeholder="Search"
+          />
+        </form>
       </section>
 
       <!-- Contact Section -->
@@ -126,12 +120,12 @@
           <div class="inline-block w-20">Company</div>
           <div class="inline-block w-20"></div>
         </section>
-        <section id="main-contact"></section>
+        <section id="contacts">
+          <!-- Render Contacts -->
+        </section>
       </section>
     </main>
 
-    <!-- JavaScript -->
     <script src="/index.js"></script>
-    <!--  -->
   </body>
 </html>
