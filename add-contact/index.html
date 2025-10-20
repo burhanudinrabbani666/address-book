@@ -8,6 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body class="flex gap-10 text-sm bg-neutral-50 text-neutral-800 p-2">
+    <!-- Navigation -->
     <nav class="flex flex-col max-w-40 gap-4 m-2">
       <a href="#" class="mx-auto my-3">
         <img src="/images/icon/home-page/Homie.svg" alt="logo" />
@@ -66,7 +67,10 @@
         </div>
       </div>
     </nav>
+
+    <!-- Main Section -->
     <main class="flex flex-col w-full gap-1 m-4 -black">
+      <!-- Top Section -->
       <section
         id="search-top"
         class="w-full h-auto -black flex justify-between gap-4 rounded-xl py-5"
@@ -82,6 +86,8 @@
           /></a>
         </div>
       </section>
+
+      <!-- Add Contact Section -->
       <section
         id="contacts-section"
         class="max-w-3/4 h-auto -black flex flex-col gap-7 rounded-xl py-3 bg-neutral-100 px-7"
@@ -97,24 +103,62 @@
             />
           </div>
         </section>
-        <section id="other-data-name" class="h-auto flex justify-between gap-6">
-          <div id="left-fields" class="w-1/2 flex flex-col gap-2">
-            <div class="w-full flex flex-col gap-1">
-              <p class="font-semibold">Email</p>
-              <input
-                id="email-field"
-                type="text"
-                class="w-full py-2 border border-neutral-400 rounded-lg"
-              />
-            </div>
-            <div class="w-full flex flex-col gap-1">
-              <p class="font-semibold">Company Name</p>
-              <input
-                id="company-field"
-                type="text"
-                class="w-full py-2 border border-neutral-400 rounded-lg"
-              />
-            </div>
+        <section id="other-data-name" class="grid grid-cols-2 gap-4 w-full">
+          <div class="w-full flex flex-col gap-1">
+            <p class="font-semibold">Email</p>
+            <input
+              id="email-field"
+              type="email"
+              class="w-full py-2 border border-neutral-400 rounded-lg"
+            />
+          </div>
+
+          <div class="w-full flex flex-col gap-1">
+            <p class="font-semibold">Phone</p>
+            <input
+              id="phone-field"
+              type="text"
+              class="w-full py-2 border border-neutral-400 rounded-lg"
+            />
+          </div>
+
+          <div class="w-full flex flex-col gap-1">
+            <p class="font-semibold">Company Name</p>
+            <input
+              id="company-field"
+              type="text"
+              class="w-full py-2 border border-neutral-400 rounded-lg"
+            />
+          </div>
+
+          <div class="w-full flex flex-col gap-1">
+            <p class="font-semibold">Job Title</p>
+            <input
+              id="job-title-field"
+              type="text"
+              class="w-full py-2 border border-neutral-400 rounded-lg"
+            />
+          </div>
+
+          <div id="" class="w-full flex flex-col gap-1">
+            <p class="font-semibold">Birthdate</p>
+            <input
+              id="birthdate"
+              type="date"
+              class="w-full py-2 border border-neutral-400 rounded-lg"
+            />
+          </div>
+
+          <div class="w-full flex flex-col gap-1">
+            <p class="font-semibold">Personal Information</p>
+            <input
+              id="personal-field"
+              type="text"
+              class="w-full py-2 border border-neutral-400 rounded-lg"
+            />
+          </div>
+
+          <div id="address" class="flex flex-col gap-4">
             <div id="address-field" class="w-full flex flex-col gap-1">
               <p class="font-semibold">Address</p>
               <input
@@ -124,6 +168,7 @@
                 placeholder="Street"
               />
             </div>
+
             <div
               id="address-detail"
               class="grid grid-flow-col grid-rows-2 gap-4"
@@ -161,50 +206,20 @@
                 />
               </div>
             </div>
-            <div id="" class="w-full flex flex-col gap-1">
-              <p class="font-semibold">Birthdate</p>
-              <input
-                type="text"
-                class="w-full py-2 border border-neutral-400 rounded-lg"
-              />
-            </div>
           </div>
-          <div id="right-fields " class="w-1/2 flex flex-col gap-2">
-            <div class="w-full flex flex-col gap-1">
-              <p class="font-semibold">Phone</p>
-              <input
-                id="phone-field"
-                type="text"
-                class="w-full py-2 border border-neutral-400 rounded-lg"
-              />
-            </div>
-            <div class="w-full flex flex-col gap-1">
-              <p class="font-semibold">Job Title</p>
-              <input
-                id="job-title-field"
-                type="text"
-                class="w-full py-2 border border-neutral-400 rounded-lg"
-              />
-            </div>
-            <div class="w-full flex flex-col gap-1">
-              <p class="font-semibold">Personal Information</p>
-              <input
-                id="personal-field"
-                type="text"
-                class="w-full py-2 border border-neutral-400 rounded-lg"
-              />
-            </div>
-            <div class="w-full flex flex-col gap-1">
-              <p class="font-semibold">Website Url</p>
-              <input
-                id="website-field"
-                type="text"
-                class="w-full py-2 border border-neutral-400 rounded-lg"
-              />
-            </div>
+
+          <div class="w-full flex flex-col gap-1">
+            <p class="font-semibold">Website Url</p>
+            <input
+              id="website-field"
+              type="url"
+              class="w-full py-2 border border-neutral-400 rounded-lg"
+            />
           </div>
         </section>
         <button
+          id="create-contact-button"
+          type="submit"
           class="rounded-full w-38 h-auto py-3 bg-indigo-500 text-neutral-100 font-bold hover:bg-indigo-700 active:bg-indigo-900 active:shadow-xl active:shadow-grey-900"
         >
           Create Contact

@@ -4,10 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Homie</title>
+    <!-- Tailwind -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Font -->
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+    </style>
+
+    <!-- style -->
   </head>
-  <body class="flex gap-10 text-sm bg-neutral-50 text-neutral-800 p-2">
+  <body
+    class="flex gap-10 text-sm bg-neutral-50 text-neutral-800 p-2 font-[Inter]"
+  >
+    <!-- Navigation -->
     <nav class="flex flex-col max-w-40 gap-4 m-2">
       <a href="#" class="mx-auto my-3">
         <img src="/images/icon/home-page/Homie.svg" alt="logo" />
@@ -65,7 +76,9 @@
       </div>
     </nav>
 
+    <!-- main Page -->
     <main class="flex flex-col w-full gap-1 m-4 -black">
+      <!-- Top section -->
       <section
         id="search-top"
         class="w-full h-auto -black flex justify-between gap-4 rounded-xl py-5"
@@ -81,6 +94,8 @@
           /></a>
         </div>
       </section>
+
+      <!-- Contact Section -->
       <section
         id="contacts-section"
         class="w-full h-auto -black flex flex-col gap-4 rounded-xl py-3 bg-neutral-100 px-7"
@@ -96,6 +111,9 @@
         <section id="main-contact"></section>
       </section>
     </main>
+
+    <!-- JavaScript -->
     <script src="/index.js"></script>
+    <!--  -->
   </body>
 </html>
