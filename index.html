@@ -7,19 +7,19 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body class="flex gap-5 text-base bg-neutral-100 text-neutral-800">
-    <nav class="flex flex-col max-w-40 gap-5 m-4 text-neutral-800">
-      <h1 class="mx-auto my-5">
+  <body class="flex gap-10 text-base bg-neutral-100 text-neutral-800">
+    <nav class="flex flex-col max-w-40 gap-2 m-4">
+      <a href="#" class="mx-auto my-5">
         <img src="/images/icon/home-page/Homie.svg" alt="logo" />
-      </h1>
+      </a>
 
       <div
         id="dev-list"
-        class="max-w-40 h-24 flex flex-col justify-center items-center gap-1"
+        class="max-w-40 h-24 flex flex-col justify-center items-center gap-2"
       >
         <div
           id="add-contact"
-          class="w-38 h-7 rounded-4xl bg-indigo-500 py-5 hover:bg-indigo-900 transition duration-150"
+          class="w-38 h-7 rounded-4xl bg-indigo-500 py-5 hover:bg-indigo-600 transition duration-150"
         >
           <div class="flex ml-5 items-center w-full h-full gap-2">
             <figure>
@@ -44,7 +44,7 @@
 
       <div
         id="user list"
-        class="max-w-40 h-20 flex flex-col justify-center items-center gap-1"
+        class="max-w-40 h-20 flex flex-col justify-center items-center gap-2"
       >
         <div id="group" class="w-38 h-7 flex justify-between px-2">
           <p class="font-semibold">Groups</p>
@@ -52,17 +52,19 @@
         </div>
         <div class="w-38 h-7 rounded-xl -black py-5">
           <div class="flex ml-5 items-center w-full h-full gap-2">
-            <figure>X</figure>
+            <figure>
+              <img src="/images/icon/home-page/bear.svg" alt="bear" />
+            </figure>
             <a href="" class="">Bearmentor</a>
           </div>
         </div>
       </div>
     </nav>
 
-    <main class="flex flex-col w-full gap-5 m-4 -black">
+    <main class="flex flex-col w-full gap-2 m-4 -black">
       <section
         id="search-top"
-        class="w-full h-auto -black flex justify-between gap-4 rounded-xl py-5 px-7"
+        class="w-full h-auto -black flex justify-between gap-4 rounded-xl py-5"
       >
         <input
           type="text"
@@ -81,7 +83,7 @@
           <div class="inline-block w-20">Email</div>
           <div class="inline-block w-20">Phone</div>
           <div class="inline-block w-20">Company</div>
-          <div class="inline-block w-20">Setting</div>
+          <div class="inline-block w-20"></div>
         </section>
         <section id="main-contact"></section>
       </section>
