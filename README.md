@@ -1,35 +1,68 @@
-# 📘 ADDRESS BOOK
+# HOMIE
 
-The **Address Book** project is designed to help users view, add, edit, group, and delete contacts, as well as display their interaction history.  
+HOMIE project is designed to help users view, add, edit, group, and delete contacts, as well as display their interaction history.  
 The design was inspired by:
-
-- [Clay ](https://clay.earth/)
-- [Less-Annoying-CRM](https://www.lessannoyingcrm.com/)
-- [Google-Contacts](https://contacts.google.com/)
 
 🔗 **Live Demo**: [address-book](https://address-book-six-theta.vercel.app/)
 
-> ⚠️ **Notes** : name of project still not decided.
+## ✨ Features
 
-## 🌟 Features
+### 1. Contact List
 
-1. **Contact:** All your connections gathered in one friendly space! **Easily browse, view, or reach out to anyone.** Keep relationships organized, meaningful, and just a tap away whenever you need them most.
+- Display all contacts with key details such as name and email.
+- Click on a contact to view detailed information including phone, email, address, and notes.
+- Responsive layout optimized for desktop, tablet, and mobile.
 
-2. **Add Contact:** Met someone new? Add them here and make sure you never lose touch! Save their name, number, email, and more, so you can stay connected wherever life takes you.
+### 2. Add New Contact
 
-3. **Edit Contact:** Update your contact’s info anytime — change names, fix numbers, or add details. Keeping your address
+- Simple form to add new contacts.
+- Store name, phone number, email, address, and additional notes.
 
-4. **Search:** Need to find someone fast? Just type a name, phone, or email. Instantly see results and connect without scrolling endlessly — your people are always easy to reach here.
+### 3. Edit & Delete Contact
 
-5. **Create a Group:** Make it easier to organize your people! Create groups for family, friends, or teams so you can message, plan, and connect with everyone you care about all at once.
+- Update contact information anytime.
+- Delete contacts that are no longer needed.
+- Clean and intuitive interface for easy management.
 
-## 🧩 Tech Stack
+### 4. Quick Search
 
-- Frontend: **HTML**, **CSS** and **JavaScript**.
-- Backend: -
-- Deployment: **Vercel**.
+- Search contacts by name, phone, or email.
+- Instant results without long scrolling.
 
-| social                                                                                                      | Links                                                                                                                                 |
-| ----------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| ![Linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white) | [Burhanudin Rabbani](https://www.linkedin.com/in/burhanudin-rabbani-ba1033362/)                                                       |
-| ![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)          | [burhanudinnrabbani666](https://www.figma.com/files/team/1542920370909340660/project/442001460/Team-project?fuid=1542920368842988705) |
+### 5. Groups & Categories
+
+- Organize contacts into groups such as _Family_, _Friends_, or _Work_.
+- Makes finding and managing contacts easier.
+
+## 🛠️ Tech Stack
+
+- **Frontend:** HTML5, CSS3, JavaScript (Vanilla)
+- **Storage:** Local Storage (Browser)
+- **Deployment:** [netfly](address-book-six-theta.vercel.app)
+
+## 📱 Responsive & User-Friendly
+
+This app is designed with a mobile-first approach, ensuring a smooth user experience across all devices — from smartphones to desktop computers.
+
+## 🚀 How to Run Locally
+
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/username/contact-manager-app.git
+   ```
+
+## 🤝 Contributing
+
+Contributions are welcome!
+Feel free to fork this repository, create a new branch, and submit a pull request.
+Please make sure to document your changes clearly.
+
+## 📬 Contact
+
+For questions or suggestions, please open an Issue in this repository or contact the maintainer via email.
+
+> “Simple, fast, and effective contact management — anywhere.”
+> | social | Links |
+> | ----------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+> | ![Linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white) | [Burhanudin Rabbani](https://www.linkedin.com/in/burhanudin-rabbani-ba1033362/) |
+> | ![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white) | [burhanudinnrabbani666](https://www.figma.com/files/team/1542920370909340660/project/442001460/Team-project?fuid=1542920368842988705) |
