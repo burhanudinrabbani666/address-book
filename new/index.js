@@ -121,9 +121,10 @@ function createdContact(
   addresscountry
 ) {
   // how to make id?
-
+  const newId =
+    dataContacts.length > 0 ? dataContacts[dataContacts.length - 1].id + 1 : 1;
   const createdContactFields = {
-    id: "newId",
+    id: newId,
     fullName: newName,
     phone: newPhone,
     email: newEmail,
@@ -138,13 +139,41 @@ function createdContact(
       country: addresscountry ?? null,
     },
   };
-  //function validate data
+
+  // fullName, phone, email EMPTY
+  const checkRequiredFields =
+    newName === null ||
+    newName === undefined ||
+    newPhone === null ||
+    newPhone === undefined ||
+    newEmail === null ||
+    newEmail === undefined;
+
+  if (checkRequiredFields) {
+    console.log(`required data empty`);
+    return;
+  }
+
+  // Validate data: phone and email
+  const notValid = validateData(newPhone, newEmail);
+  if (notValid == true) {
+    console.log("❌ Data already used");
+    return; // for canceling all proses create contact
+  }
+
   const addNewContactToDataContacts = [...dataContacts, createdContactFields];
   console.log(addNewContactToDataContacts);
+  console.log("✅ Contact successfully created");
 }
 
-function validateData(phone, email) {}
+function validateData(phone, email) {
+  return dataContacts.some(
+    (contact) => contact.email === email || contact.phone === phone
+  );
+}
 
 function deletedContact(params) {}
 
 function searchContactByFullName(params) {}
+
+createdContact();
