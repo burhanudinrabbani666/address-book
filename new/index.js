@@ -107,5 +107,44 @@ function renderDetailContact(contactIndex) {
 `);
 }
 
-// renderContacts(dataContacts);
-renderKeyDataContacts(dataContacts);
+function createdContact(
+  newName,
+  newPhone,
+  newEmail,
+  companyName,
+  birthdate,
+  addressStreet,
+  addressSubDistrict,
+  addresscity,
+  addressprovince,
+  addresszipcode,
+  addresscountry
+) {
+  // how to make id?
+
+  const createdContactFields = {
+    id: "newId",
+    fullName: newName,
+    phone: newPhone,
+    email: newEmail,
+    company: companyName ?? null,
+    birthdate: birthdate ?? null,
+    address: {
+      street: addressStreet ?? null,
+      subDistrict: addressSubDistrict ?? null,
+      city: addresscity ?? null,
+      province: addressprovince ?? null,
+      zipcode: addresszipcode ?? null,
+      country: addresscountry ?? null,
+    },
+  };
+  //function validate data
+  const addNewContactToDataContacts = [...dataContacts, createdContactFields];
+  console.log(addNewContactToDataContacts);
+}
+
+function validateData(phone, email) {}
+
+function deletedContact(params) {}
+
+function searchContactByFullName(params) {}
