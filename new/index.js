@@ -191,14 +191,71 @@ function createdContact(
 }
 
 function deleteContactById(contacts, id) {
-  const updatedDataContacts = contacts.filter((item) => item.id !== id);
+  const contactToDelete = contacts.find((contact) => contact.id === id);
 
-  const newDataContacts = updatedDataContacts;
-  dataContacts = newDataContacts;
-  return newDataContacts;
+  if (confirm(`are you sure want to delete ${contactToDelete.fullName}`)) {
+    const updatedDataContacts = contacts.filter((item) => item.id !== id);
+    console.log(`✅ successly delete contact : ${contactToDelete.fullName}`);
+    const newDataContacts = updatedDataContacts;
+    dataContacts = newDataContacts;
+    return newDataContacts;
+  } else {
+    return;
+  }
 }
 
-function editedContact(params) {}
+function editedContact(
+  inputDataContacts,
+  id,
+  newName,
+  newPhone,
+  newEmail,
+  companyName,
+  birthdate,
+  addressStreet,
+  addressSubDistrict,
+  addresscity,
+  addressprovince,
+  addresszipcode,
+  addresscountry
+) {
+  const updatecontact = inputDataContacts.map((contact) => {
+    if (contact.id === id) {
+      console.log("update contact success");
+
+      return {
+        ...contact,
+        ...(newName && { fullName: newName }),
+        ...(newPhone && { phone: newPhone }),
+        ...(newEmail && { email: newEmail }),
+        ...(companyName && { company: companyName }),
+        ...(birthdate && { birthdate }),
+        ...(addressStreet ||
+        addressSubDistrict ||
+        addresscity ||
+        addressprovince ||
+        addresszipcode ||
+        addresscountry
+          ? {
+              address: {
+                ...contact.address,
+                ...(addressStreet && { street: addressStreet }),
+                ...(addressSubDistrict && { subDistrict: addressSubDistrict }),
+                ...(addresscity && { city: addresscity }),
+                ...(addressprovince && { province: addressprovince }),
+                ...(addresszipcode && { zipcode: addresszipcode }),
+                ...(addresscountry && { country: addresscountry }),
+              },
+            }
+          : {}),
+      };
+    }
+    return contact;
+  });
+  dataContacts = updatecontact;
+  return updatecontact;
+}
+
 // ----------------------------------------------------
 // ----------------------------------------------------
 // function to validate input data
@@ -211,3 +268,5 @@ function validatePhoneAndEmail(phone, email) {
 function checkRequiredFields(fullName, phone, email) {
   return !fullName || !phone || !email;
 }
+
+console.log(deleteContactById(dataContacts, 1));
