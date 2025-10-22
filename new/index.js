@@ -83,6 +83,9 @@ let dataContacts = [
   },
 ];
 
+// ----------------------------------------------------
+// ----------------------------------------------------
+// function to render data contact
 function renderKeyDataContacts(dataContacts) {
   for (let index = 0; index < dataContacts.length; index++) {
     const contact = dataContacts[index];
@@ -114,7 +117,25 @@ function renderDetailContact(contactIndex) {
         ${contactIndex.address.province}, ${contactIndex.address.country}, ${contactIndex.address.zipcode}.
 `);
 }
+function searchContactByKeyData(keyword) {
+  const keywordLower = keyword.toLowerCase();
+  const searchContactByKeyData = dataContacts.filter(
+    (contact) =>
+      contact.fullName.toLowerCase().includes(keywordLower) ||
+      contact.phone.toLowerCase().includes(keywordLower) ||
+      contact.email.toLowerCase().includes(keywordLower)
+  );
 
+  if (searchContactByKeyData == 0) {
+    console.log(`data not found ❎`);
+    return [];
+  }
+  console.log(`contact found ✅`);
+  return searchContactByKeyData;
+}
+// ----------------------------------------------------
+// ----------------------------------------------------
+// function to changed main data contacts
 function createdContact(
   newName,
   newPhone,
@@ -162,11 +183,25 @@ function createdContact(
     return; // for canceling all proses create contact
   }
 
-  const addNewContactToDataContacts = [...dataContacts, createdContactFields];
-  console.log(addNewContactToDataContacts);
+  const createNewContactSuccess = [...dataContacts, createdContactFields];
+
+  dataContacts = createNewContactSuccess;
   console.log("✅ Contact successfully created");
+  return dataContacts;
 }
 
+function deleteContactById(contacts, id) {
+  const updatedDataContacts = contacts.filter((item) => item.id !== id);
+
+  const newDataContacts = updatedDataContacts;
+  dataContacts = newDataContacts;
+  return newDataContacts;
+}
+
+function editedContact(params) {}
+// ----------------------------------------------------
+// ----------------------------------------------------
+// function to validate input data
 function validatePhoneAndEmail(phone, email) {
   return dataContacts.some(
     (contact) => contact.email === email || contact.phone === phone
@@ -175,23 +210,4 @@ function validatePhoneAndEmail(phone, email) {
 
 function checkRequiredFields(fullName, phone, email) {
   return !fullName || !phone || !email;
-}
-
-function deletedContact(params) {}
-
-function searchContactByKeyData(keyword) {
-  const keywordLower = keyword.toLowerCase();
-  const searchContactByKeyData = dataContacts.filter(
-    (contact) =>
-      contact.fullName.toLowerCase().includes(keywordLower) ||
-      contact.phone.toLowerCase().includes(keywordLower) ||
-      contact.email.toLowerCase().includes(keywordLower)
-  );
-
-  if (searchContactByKeyData == 0) {
-    console.log(`data not found ❎`);
-    return [];
-  }
-  console.log(`contact found ✅`);
-  return searchContactByKeyData;
 }
