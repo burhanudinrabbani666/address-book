@@ -51,7 +51,7 @@ let dataContacts = [
   },
   {
     id: 4,
-    fullName: "Budi Santoso",
+    fullName: "Budi Santoso bani",
     phone: "+62-856-9876-5544",
     email: "budi.santoso@ptmegah.co.id",
     company: "PT Megah Karya Sentosa",
@@ -179,4 +179,19 @@ function checkRequiredFields(fullName, phone, email) {
 
 function deletedContact(params) {}
 
-function searchContactByFullName(params) {}
+function searchContactByKeyData(keyword) {
+  const keywordLower = keyword.toLowerCase();
+  const searchContactByKeyData = dataContacts.filter(
+    (contact) =>
+      contact.fullName.toLowerCase().includes(keywordLower) ||
+      contact.phone.toLowerCase().includes(keywordLower) ||
+      contact.email.toLowerCase().includes(keywordLower)
+  );
+
+  if (searchContactByKeyData == 0) {
+    console.log(`data not found ❎`);
+    return [];
+  }
+  console.log(`contact found ✅`);
+  return searchContactByKeyData;
+}
