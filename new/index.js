@@ -92,6 +92,14 @@ function renderKeyDataContacts(dataContacts) {
     📧 ${contact.email}`);
   }
 }
+function renderDetailContactById(dataContacts, id) {
+  const renderDetailContactById = dataContacts.find(
+    (dataContacts) => dataContacts.id === id
+  );
+  if (!renderDetailContactById) return null;
+
+  renderDetailContact(renderDetailContactById);
+}
 
 function renderDetailContact(contactIndex) {
   console.log(`
@@ -141,22 +149,15 @@ function createdContact(
   };
 
   // fullName, phone, email EMPTY
-  const checkRequiredFields =
-    newName === null ||
-    newName === undefined ||
-    newPhone === null ||
-    newPhone === undefined ||
-    newEmail === null ||
-    newEmail === undefined;
-
-  if (checkRequiredFields) {
-    console.log(`required data empty`);
+  const isRequiredEmpty = checkRequiredFields(newName, newPhone, newEmail);
+  if (isRequiredEmpty) {
+    console.log(`❗ Required data ( name, phone, email) cannot empty`);
     return;
   }
 
   // Validate data: phone and email
-  const notValid = validateData(newPhone, newEmail);
-  if (notValid == true) {
+  const validate = validatePhoneAndEmail(newPhone, newEmail);
+  if (validate == true) {
     console.log("❌ Data already used");
     return; // for canceling all proses create contact
   }
@@ -166,14 +167,16 @@ function createdContact(
   console.log("✅ Contact successfully created");
 }
 
-function validateData(phone, email) {
+function validatePhoneAndEmail(phone, email) {
   return dataContacts.some(
     (contact) => contact.email === email || contact.phone === phone
   );
 }
 
+function checkRequiredFields(fullName, phone, email) {
+  return !fullName || !phone || !email;
+}
+
 function deletedContact(params) {}
 
 function searchContactByFullName(params) {}
-
-createdContact();
