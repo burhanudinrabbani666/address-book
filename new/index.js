@@ -8,14 +8,7 @@ let dataContacts = [
     email: "bani@exm.com",
     company: null,
     birthdate: "2002-11-14",
-    address: {
-      street: "Jl. prapatan No.5",
-      subDistrict: "Ciwaringin",
-      city: "Cirebon",
-      province: "Jawa Barat",
-      zipcode: "45167",
-      country: "Indonesia",
-    },
+    address: "Jl. Prapatan No.09, Ciwaringin, Cirebon, Indonesia",
   },
   {
     id: 2,
@@ -24,14 +17,7 @@ let dataContacts = [
     email: "nico@exm.com",
     company: "PT Kaldu Sari Nabati",
     birthdate: "2001-11-14",
-    address: {
-      street: "Jl Mawar No.32",
-      subDistrict: "ligung",
-      city: "Majalengka",
-      province: "Jawa Barat",
-      zipcode: "45144",
-      country: "Indonesia",
-    },
+    address: "Jl. Mawar No.04, Ligung, Majalengka, Indonesia",
   },
   {
     id: 3,
@@ -40,14 +26,7 @@ let dataContacts = [
     email: "siti.rahmawati@example.com",
     company: "CV Maju Jaya Abadi",
     birthdate: "1998-05-03",
-    address: {
-      street: "Jl. Melati No. 12",
-      subDistrict: "Antapani",
-      city: "Bandung",
-      province: "Jawa Barat",
-      zipcode: "40291",
-      country: "Indonesia",
-    },
+    address: "Jl. Melati, Antapati, Bandung, Indonesia",
   },
   {
     id: 4,
@@ -56,14 +35,7 @@ let dataContacts = [
     email: "budi.santoso@ptmegah.co.id",
     company: "PT Megah Karya Sentosa",
     birthdate: "1995-02-21",
-    address: {
-      street: "Jl. Kenanga No. 7",
-      subDistrict: "Sukolilo",
-      city: "Surabaya",
-      province: "Jawa Timur",
-      zipcode: "60111",
-      country: "Indonesia",
-    },
+    address: "Jl. Kenaga No.07, Sukolilo, Surabaya, Indonesia",
   },
   {
     id: 5,
@@ -72,14 +44,7 @@ let dataContacts = [
     email: "andi.pratama@indotech.com",
     company: "IndoTech Global",
     birthdate: "2000-09-09",
-    address: {
-      street: "Jl. Merpati No. 5",
-      subDistrict: "Pondok Aren",
-      city: "Tangerang Selatan",
-      province: "Banten",
-      zipcode: "15221",
-      country: "Indonesia",
-    },
+    address: "Jl. Merpati No.01, Pondok Aren, Tangerang Selatan, Indonesia",
   },
 ];
 
@@ -111,10 +76,7 @@ function renderDetailContact(contactIndex) {
     📧 ${contactIndex.email}
     🏢 ${contactIndex.company}
     🎂 ${contactIndex.birthdate}
-    📌 Address: 
-        ${contactIndex.address.street}
-        ${contactIndex.address.subDistrict}, ${contactIndex.address.city},
-        ${contactIndex.address.province}, ${contactIndex.address.country}, ${contactIndex.address.zipcode}.
+    📌 ${contactIndex.address} 
 `);
 }
 function searchContactByKeyData(keyword) {
@@ -126,11 +88,12 @@ function searchContactByKeyData(keyword) {
       contact.email.toLowerCase().includes(keywordLower)
   );
 
-  if (searchContactByKeyData == 0) {
+  if (searchContactByKeyData.length == 0) {
     console.log(`data not found ❎`);
     return [];
   }
   console.log(`contact found ✅`);
+  searchContactByKeyData.forEach((contact) => renderDetailContact(contact));
   return searchContactByKeyData;
 }
 // ----------------------------------------------------
@@ -142,12 +105,7 @@ function createdContact(
   newEmail,
   companyName,
   birthdate,
-  addressStreet,
-  addressSubDistrict,
-  addresscity,
-  addressprovince,
-  addresszipcode,
-  addresscountry
+  address
 ) {
   // how to make id?
   const newId =
@@ -159,27 +117,20 @@ function createdContact(
     email: newEmail,
     company: companyName ?? null,
     birthdate: birthdate ?? null,
-    address: {
-      street: addressStreet ?? null,
-      subDistrict: addressSubDistrict ?? null,
-      city: addresscity ?? null,
-      province: addressprovince ?? null,
-      zipcode: addresszipcode ?? null,
-      country: addresscountry ?? null,
-    },
+    address: address ?? null,
   };
 
   // fullName, phone, email EMPTY
-  const isRequiredEmpty = checkRequiredFields(newName, newPhone, newEmail);
+  const isRequiredEmpty = checkRequiredFields(newName, newPhone);
   if (isRequiredEmpty) {
-    console.log(`❗ Required data ( name, phone, email) cannot empty`);
+    console.log(`❗ Required data ( name, phone) cannot empty`);
     return;
   }
 
   // Validate data: phone and email
-  const validate = validatePhoneAndEmail(newPhone, newEmail);
+  const validate = validatePhone(newPhone);
   if (validate == true) {
-    console.log("❌ Data already used");
+    console.log("❌ Number already used");
     return; // for canceling all proses create contact
   }
 
@@ -210,14 +161,9 @@ function editedContact(
   newName,
   newPhone,
   newEmail,
-  companyName,
-  birthdate,
-  addressStreet,
-  addressSubDistrict,
-  addresscity,
-  addressprovince,
-  addresszipcode,
-  addresscountry
+  newCompanyName,
+  newBirthdate,
+  newAddress
 ) {
   const updatecontact = inputDataContacts.map((contact) => {
     if (contact.id === id) {
@@ -228,26 +174,9 @@ function editedContact(
         ...(newName && { fullName: newName }),
         ...(newPhone && { phone: newPhone }),
         ...(newEmail && { email: newEmail }),
-        ...(companyName && { company: companyName }),
-        ...(birthdate && { birthdate }),
-        ...(addressStreet ||
-        addressSubDistrict ||
-        addresscity ||
-        addressprovince ||
-        addresszipcode ||
-        addresscountry
-          ? {
-              address: {
-                ...contact.address,
-                ...(addressStreet && { street: addressStreet }),
-                ...(addressSubDistrict && { subDistrict: addressSubDistrict }),
-                ...(addresscity && { city: addresscity }),
-                ...(addressprovince && { province: addressprovince }),
-                ...(addresszipcode && { zipcode: addresszipcode }),
-                ...(addresscountry && { country: addresscountry }),
-              },
-            }
-          : {}),
+        ...(newCompanyName && { company: newCompanyName }),
+        ...(newBirthdate && { birthdate: newBirthdate }),
+        ...(newAddress && { address: newAddress }),
       };
     }
     return contact;
@@ -259,14 +188,14 @@ function editedContact(
 // ----------------------------------------------------
 // ----------------------------------------------------
 // function to validate input data
-function validatePhoneAndEmail(phone, email) {
-  return dataContacts.some(
-    (contact) => contact.email === email || contact.phone === phone
-  );
+function validatePhoneAndEmail(phone) {
+  return dataContacts.some((contact) => contact.phone === phone);
 }
 
 function checkRequiredFields(fullName, phone, email) {
-  return !fullName || !phone || !email;
+  return !fullName || !phone;
 }
+//------------------------------------------------------
+// -----------------------------------------------------
 
-console.log(deleteContactById(dataContacts, 1));
+renderKeyDataContacts(dataContacts);
