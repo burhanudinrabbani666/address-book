@@ -1,147 +1,53 @@
+"use strict";
+
 let dataContacts = [
   {
     id: 1,
-    name: "Agus Mulyono",
-    email: "agus@example.com",
-    phone: "+62-812-3456-7890",
-    address: {
-      street: "Jl. pangkalan Node.4",
-      streetDetails: "Pangkalan Pari",
-      subDistrict: "Ampel",
-      city: "Indramayu",
-      zipCode: "45272",
-      country: "Indonesia",
-    },
-    company: "PT SIMNU Majalengka",
-    birthday: new Date("2000-10-13"),
+    fullName: "Burhanudin Rabbani",
+    phone: "+62-1234-5678-999",
+    email: "bani@exm.com",
+    company: null,
+    birthdate: "2002-11-14",
+    address: "Jl. Prapatan No.09, Ciwaringin, Cirebon, Indonesia",
   },
   {
     id: 2,
-    name: "Dana Agung",
-    email: "dana@exammple.com",
-    phone: "+62-812-3456-7891",
-    address: {
-      street: "Jl. Kasab No.3",
-      streetDetails: "Babakan",
-      subDistrict: "Ciwaringin",
-      city: "Cirebon",
-      zipCode: "45167",
-      country: "Indonesia",
-    },
-    company: "PT Kasab Steel",
-    birthday: new Date("2021-01-03"),
+    fullName: "nico",
+    phone: "+62-1234-7676-999",
+    email: "nico@exm.com",
+    company: "PT Kaldu Sari Nabati",
+    birthdate: "2001-11-14",
+    address: "Jl. Mawar No.04, Ligung, Majalengka, Indonesia",
   },
   {
     id: 3,
-    name: "Rivan",
-    email: "rivan@example.com",
-    phone: "+62-812-3456-7892",
-    address: {
-      street: "Jl. Majasari No.5",
-      streetDetails: "Majasari",
-      subDistrict: "Ligung",
-      city: "Majalengka",
-      zipCode: "45456",
-      country: "Indonesia",
-    },
-    company: "PT Nabati Majalengka",
-    birthday: new Date("1997-04-13"),
+    fullName: "Siti Rahmawati",
+    phone: "+62-812-3456-7890",
+    email: "siti.rahmawati@example.com",
+    company: "CV Maju Jaya Abadi",
+    birthdate: "1998-05-03",
+    address: "Jl. Melati, Antapati, Bandung, Indonesia",
   },
   {
     id: 4,
-    name: "Nico",
-    email: "nico@example.com",
-    phone: "+62-812-3456-7893",
-    address: {
-      street: "Jl. Ki Braja Nata No.1",
-      streetDetails: "Budur",
-      subDistrict: "Ciwaringin",
-      city: "Cirebon",
-      zipCode: "45167",
-      country: "Indonesia",
-    },
-    company: "PT Kobe",
-    birthday: new Date("2001-02-20"),
+    fullName: "Budi Santoso bani",
+    phone: "+62-856-9876-5544",
+    email: "budi.santoso@ptmegah.co.id",
+    company: "PT Megah Karya Sentosa",
+    birthdate: "1995-02-21",
+    address: "Jl. Kenaga No.07, Sukolilo, Surabaya, Indonesia",
+  },
+  {
+    id: 5,
+    fullName: "Andi Pratama",
+    phone: "+62-813-3344-2211",
+    email: "andi.pratama@indotech.com",
+    company: "IndoTech Global",
+    birthdate: "2000-09-09",
+    address: "Jl. Merpati No.01, Pondok Aren, Tangerang Selatan, Indonesia",
   },
 ];
+renderKeyDataContacts(dataContacts);
 
-function displayContacts(contacts) {
-  const appElement = document.getElementById("main-contact");
-
-  appElement.innerHTML = `<ul id="contacts">
-  ${contacts.map((contact) => renderContact(contact)).join("")}
-  </ul>`;
-}
-
-function displayContactById(contacts, id) {
-  const displayContactById = contacts.find((contact) => contact.id === id);
-  if (!contacts) return null;
-
-  renderContact(displayContactById);
-}
-
-function renderContact(contact) {
-  return `<li class="py-3 px-2 flex justify-between w-full border-b border-neutral-300 bg hover:bg-neutral-300 transition duration-150">
-    <a href="#" class="font-semibold min-w-40"> ${contact.name} </a>
-    <p class="inline-block min-w-40 text-neutral-600 hover:text-blue-700"> ${contact.email}</p> 
-    <p class="inline-block min-w-40 text-neutral-600 hover:text-blue-700"> ${contact.phone}</p> 
-    <p class="inline-block min-w-40 text-neutral-600 "> ${contact.company}</p>
-    <div class=" flex flex-row gap-2 items-center ">
-      <a class="p-2 rounded-full hover:bg-neutral-200"> <img src="/images/icon/home-page/star.svg" alt="star"/></a>
-      <a href="#" class="p-2 rounded-full hover:bg-neutral-200"> <img src="/images/icon/home-page/edit.svg" alt="edit"/></a> 
-      <button class="p-2 rounded-full hover:bg-neutral-200" onclick="deletedContactById(dataContacts, ${contact.id})" type="button"> 
-      <img src="/images/icon/home-page/trash-1.svg" alt="trash"/>
-      </button>
-    </div>
-
-</li>`;
-}
-
-displayContacts(dataContacts);
-
-function searchContactsByName(contacts, keyword) {
-  const foundContacts = contacts.filter((contact) =>
-    contact.name.toLowerCase().includes(keyword.toLowerCase())
-  );
-
-  if (foundContacts <= 0) {
-    console.log(`data not yet available `);
-    return null;
-  }
-
-  return foundContacts;
-}
-
-function createContact(newContact) {
-  const newId =
-    dataContacts.length > 0 ? dataContacts[dataContacts.length - 1].id + 1 : 1;
-
-  const contact = { id: newId, ...newContact };
-
-  // update new data
-  dataContacts = [...dataContacts, contact];
-  displayContacts(dataContacts);
-}
-
-function deleteContactById(contacts, id) {
-  const updatedDataContacts = contacts.filter((item) => item.id !== id);
-
-  newDataContacts = updatedDataContacts;
-  displayContacts(newDataContacts);
-}
-
-function editContactById(contacts, id, newContactData) {
-  const updatedContacts = contacts.map((contact) => {
-    if (contact.id === id) {
-      return { ...contact, ...newContactData };
-    }
-    return contact;
-  });
-  dataContacts = updatedContacts;
-}
-
-// 📌 Address:
-//     🏠 ${contact.address.street}, ${contact.address.streetDetails}
-//     🏙️ ${contact.address.subDistrict}, ${contact.address.city},${contact.address.zipCode},
-//     🌐 ${contact.address.country},
-// 🎂 ${contact.birthday}
+deleteContactById(dataContacts, 2);
+renderKeyDataContacts(dataContacts);
