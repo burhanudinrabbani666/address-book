@@ -4,21 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Homie | Contacts</title>
-
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
     <!-- Tailwind -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-
+    <script src="https://unpkg.com/feather-icons"></script>
     <!-- Google Font -->
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
-    </style>
   </head>
 
   <body
     class="flex gap-10 text-sm bg-neutral-50 text-neutral-800 p-4 font-[Inter]"
   >
     <!-- Navigation -->
-    <nav class="flex flex-col w-40 gap-4 m-2">
+    <nav class="flex flex-col w-44 gap-4 m-2 px-3 py-4 rounded-xl shadow-xl">
       <!-- Logo -->
       <a href="/" class="mx-auto my-3">
         <img src="/images/icon/home-page/Homie.svg" alt="Homie Logo" />
@@ -53,7 +55,7 @@
           </a>
         </div>
 
-        <!-- Favorites -->
+        <!-- Favorites
         <div class="w-full rounded-2xl hover:bg-neutral-200 py-3 transition">
           <a
             href="#"
@@ -62,10 +64,10 @@
             <img src="/images/icon/home-page/star-gold-1.svg" alt="favorites" />
             Favorites
           </a>
-        </div>
+        </div> -->
 
         <!-- Trash -->
-        <div class="w-full rounded-2xl hover:bg-neutral-200 py-3 transition">
+        <!-- <div class="w-full rounded-2xl hover:bg-neutral-200 py-3 transition">
           <a
             href="#"
             class="flex items-center gap-2 px-4 font-semibold text-neutral-800"
@@ -73,7 +75,7 @@
             <img src="/images/icon/home-page/trash-1.svg" alt="trash" />
             Trash
           </a>
-        </div>
+        </div> -->
       </div>
 
       <!-- Groups -->
@@ -100,10 +102,15 @@
         class="w-full flex justify-between items-center gap-4 rounded-xl py-4"
       >
         <form
-          action=""
+          id="search-form"
           class="border border-neutral-400 py-2 px-4 w-3/4 rounded-full"
         >
-          <input type="text" class="" placeholder="Search" />
+          <input
+            id="search-input"
+            type="text"
+            class="w-full h-auto focus:outline-none"
+            placeholder="Search"
+          />
         </form>
       </section>
 
@@ -112,24 +119,25 @@
         id="contacts-section"
         class="w-full bg-neutral-100 flex flex-col gap-4 rounded-xl py-6 px-7"
       >
-        <h2 class="text-3xl font-bold mb-2">Contacts</h2>
+        <h2 class="text-3xl font-bold mb-2">
+          Contacts <span id="length"></span>
+        </h2>
 
         <!-- Header Row -->
         <div
-          class="px-2 rounded flex justify-between w-full font-semibold text-neutral-700 border-b border-neutral-300 pb-2"
+          class="flex justify-between w-full font-semibold text-neutral-700 border-b border-neutral-300 pb-2 px-5"
         >
-          <div class="w-1/5">Name</div>
-          <div class="w-1/5">Email</div>
-          <div class="w-1/5">Phone</div>
-          <div class="w-1/5">Company</div>
-          <div class="w-1/5 text-right">Actions</div>
+          <p class="inline-block w-1/7">Name</p>
+          <p class="inline-block w-1/7">Email</p>
+          <p class="inline-block w-1/7">Phone</p>
+          <p class="inline-block w-1/7">Company</p>
+          <p class="inline-block w-1/7">Actions</p>
         </div>
 
         <!-- Dynamic Contacts List -->
-        <ul
-          id="main-contact"
-          class="flex flex-col divide-y divide-neutral-300"
-        ></ul>
+        <ul id="main-contact">
+          <!-- ... -->
+        </ul>
       </section>
     </main>
 

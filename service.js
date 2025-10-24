@@ -1,13 +1,5 @@
 // function to render data contact
-function renderKeyDataContacts(dataContacts) {
-  for (let index = 0; index < dataContacts.length; index++) {
-    const contact = dataContacts[index];
-    console.log(`
-    👤 ${contact.fullName}
-    📱 ${contact.phone}
-    📧 ${contact.email}`);
-  }
-}
+
 function renderDetailContactById(dataContacts, id) {
   const renderDetailContactById = dataContacts.find(
     (dataContacts) => dataContacts.id === id
@@ -18,32 +10,65 @@ function renderDetailContactById(dataContacts, id) {
 }
 
 function renderDetailContact(contactIndex) {
-  console.log(`
-    👤 ${contactIndex.fullName}
+  return `<li>
+    👤 ${contactIndex.fullName} 
     📱 ${contactIndex.phone}
     📧 ${contactIndex.email}
     🏢 ${contactIndex.company}
     🎂 ${contactIndex.birthdate}
-    📌 ${contactIndex.address} 
-`);
+    📌 ${contactIndex.address}
+    </li>
+  `;
 }
-function searchContactByKeyData(keyword) {
-  const keywordLower = keyword.toLowerCase();
-  const searchContactByKeyData = dataContacts.filter(
-    (contact) =>
-      contact.fullName.toLowerCase().includes(keywordLower) ||
-      contact.phone.toLowerCase().includes(keywordLower) ||
-      contact.email.toLowerCase().includes(keywordLower)
-  );
 
-  if (searchContactByKeyData.length == 0) {
-    console.log(`data not found ❎`);
-    return [];
+//////////////////////////////////
+//////////////////////////////////
+function searchContactByKeyData(keyword) {
+  const contacts = loadContactsFromStorage() || []; // ambil data dari local storage;
+
+  const filteredContacts = contacts.filter(
+    (contact) =>
+      contact.fullName.toLowerCase().includes(keyword.toLowerCase()) ||
+      contact.phone.toLowerCase().includes(keyword.toLowerCase()) ||
+      contact.email.toLowerCase().includes(keyword.toLowerCase())
+  ); //
+
+  const mainContactElement = document.getElementById("main-contact"); // DOM contact list
+
+  if (filteredContacts.length === 0) {
+    alert(`contact not found`);
+    return renderKeyDataContacts(contacts);
+  } else {
+    const contactFound = filteredContacts
+      .map((contact) => renderKeyDataContact(contact))
+      .join("");
+    mainContactElement.innerHTML = `
+      <div id="contact" class="flex flex-col">
+        ${contactFound}
+      </div>
+    `;
   }
-  console.log(`contact found ✅`);
-  searchContactByKeyData.forEach((contact) => renderDetailContact(contact));
-  return searchContactByKeyData;
+
+  feather.replace(); // render ulang ikon
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  setInitialContacts();
+  renderKeyDataContacts();
+  feather.replace();
+
+  const searchInput = document.getElementById("search-input");
+  const searchForm = document.getElementById("search-form");
+
+  searchForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const keyword = searchInput.value.trim();
+    searchContactByKeyData(keyword);
+  });
+});
+///////////////////////////////////////////
+///////////////////////////////////////////
+
 // ----------------------------------------------------
 // ----------------------------------------------------
 // function to changed main data contacts
@@ -83,10 +108,9 @@ function createdContact(
   }
 
   const createNewContactSuccess = [...dataContacts, createdContactFields];
-
-  dataContacts = createNewContactSuccess;
+  saveToLocalStorage(createNewContactSuccess);
   console.log("✅ Contact successfully created");
-  return dataContacts;
+  return createNewContactSuccess;
 }
 
 function deleteContactById(contacts, id) {

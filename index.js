@@ -6,8 +6,8 @@ let dataContacts = [
     fullName: "Burhanudin Rabbani",
     phone: "+62-1234-5678-999",
     email: "bani@exm.com",
-    company: null,
-    birthdate: "2002-11-14",
+    company: "",
+    birthdate: new Date(2002, 10, 14, 0),
     address: "Jl. Prapatan No.09, Ciwaringin, Cirebon, Indonesia",
   },
   {
@@ -47,7 +47,81 @@ let dataContacts = [
     address: "Jl. Merpati No.01, Pondok Aren, Tangerang Selatan, Indonesia",
   },
 ];
-renderKeyDataContacts(dataContacts);
 
-deleteContactById(dataContacts, 2);
-renderKeyDataContacts(dataContacts);
+// const saveInitial = JSON.stringify(dataContacts);
+// localStorage.setItem("contact-data", saveInitial);
+
+function setInitialContacts() {
+  if (!localStorage.getItem("contact-data")) {
+    const saveInitial = JSON.stringify(dataContacts);
+    localStorage.setItem("contact-data", saveInitial);
+  }
+}
+function renderKeyDataContacts() {
+  const loadLocalStorage = loadContactsFromStorage();
+
+  const queryString = window.location.search;
+  const params = new URLSearchParams(queryString);
+  const keyword = params.get("q");
+  const labelFilter = params.get("tag");
+
+  const mainContactElement = document.getElementById("main-contact");
+  const localasString = loadLocalStorage
+    .map((contact) => {
+      return renderKeyDataContact(contact);
+    })
+    .join("");
+  mainContactElement.innerHTML = `<div id ="contact" class = "flex flex-col ">
+    ${localasString}
+  </div>`;
+  feather.replace();
+}
+function renderKeyDataContact(contactIndex) {
+  return `
+    <a href="/detail-contact/?id=${contactIndex.id}" 
+    class="group flex justify-between py-5 px-5 border-b border-neutral-300 hover:bg-neutral-300 rounded pointer">
+      
+      <p class="inline-block w-1/6 truncate text-neutral-900">${contactIndex.fullName}</p>
+      <p class="inline-block w-1/6 truncate text-neutral-600 hover:text-blue-500">${contactIndex.phone}</p>
+      <p class="inline-block w-1/6 truncate text-neutral-600 hover:text-blue-500">${contactIndex.email}</p>
+      <p class="inline-block w-1/6 truncate text-neutral-600">${contactIndex.company}</p>
+      <div class="w-1/6 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200" >
+        
+        <button class="py-1 px-2.5 shadow rounded-xl hover:shadow-xl/30 hover:bg-neutral-200 ">
+        <i data-feather="star" width="16px" height="16px"></i>
+        </button>
+
+        <button class="py-1 px-2.5 shadow rounded-xl hover:shadow-xl/30 hover:bg-neutral-200 ">
+        <i data-feather="edit-2" width="16px" height="16px"></i>
+        </button>
+        
+        <button onclick="deleteContactById(${contactIndex.id})" class="py-1 px-2.5 shadow rounded-xl hover:shadow-xl/30 hover:bg-neutral-200 ">
+        <i data-feather="trash" width="16px" height="16px"></i>
+        </button>
+
+      </div>
+    </a>
+  `;
+}
+
+function deleteContactById(id) {
+  const contacts = loadContactsFromStorage();
+  const contactToDelete = contacts.find((contact) => contact.id == id);
+
+  if (confirm(`Are you sure want to delete ${contactToDelete.fullName}?`)) {
+    const updatedContacts = contacts.filter(
+      (item) => Number(item.id) !== Number(id)
+    );
+    alert(`✅ Successfully deleted contact: ${contactToDelete.fullName}`);
+
+    saveToLocalStorage(updatedContacts);
+    renderKeyDataContacts();
+    feather.replace();
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  setInitialContacts();
+  renderKeyDataContacts();
+  feather.replace();
+});
