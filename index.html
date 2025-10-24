@@ -20,7 +20,9 @@
     class="flex gap-10 text-sm bg-neutral-50 text-neutral-800 p-4 font-[Inter]"
   >
     <!-- Navigation -->
-    <nav class="flex flex-col w-44 gap-4 m-2 px-3 py-4 rounded-xl shadow-xl">
+    <nav
+      class="flex flex-col w-44 gap-4 m-2 px-3 py-4 rounded-xl shadow-xl h-full"
+    >
       <!-- Logo -->
       <a href="/" class="mx-auto my-3">
         <img src="/images/icon/home-page/Homie.svg" alt="Homie Logo" />
@@ -37,52 +39,39 @@
         >
           <a
             href="/add-contact/index.html"
-            class="flex items-center gap-2 px-4 py-3 font-bold text-neutral-100"
+            class="flex justify-between items-center gap-2 px-4 py-3 font-bold text-neutral-100"
           >
-            <img src="/images/icon/home-page/plus.svg" alt="add contact" />
-            Add Contact
+            <i data-feather="user-plus"></i>
+            <span>Add Contact</span>
           </a>
         </div>
 
         <!-- Contacts -->
-        <div class="w-full rounded-2xl bg-neutral-300 py-3 transition">
+        <div class="w-full rounded-2xl bg-neutral-200 py-3">
           <a
             href="#"
-            class="flex items-center gap-2 px-4 font-semibold text-neutral-800"
+            class="flex justify-between items-center gap-2 px-4 font-semibold text-neutral-800"
           >
-            <img src="/images/icon/home-page/contact.svg" alt="contacts" />
-            Contacts
+            <i data-feather="users"></i>
+            <span>Contacts</span>
+            <i
+              data-feather="circle"
+              width="7px"
+              height="7px"
+              color="green"
+              fill="green"
+            ></i>
           </a>
         </div>
-
-        <!-- Favorites
-        <div class="w-full rounded-2xl hover:bg-neutral-200 py-3 transition">
-          <a
-            href="#"
-            class="flex items-center gap-2 px-4 font-semibold text-neutral-800"
-          >
-            <img src="/images/icon/home-page/star-gold-1.svg" alt="favorites" />
-            Favorites
-          </a>
-        </div> -->
-
-        <!-- Trash -->
-        <!-- <div class="w-full rounded-2xl hover:bg-neutral-200 py-3 transition">
-          <a
-            href="#"
-            class="flex items-center gap-2 px-4 font-semibold text-neutral-800"
-          >
-            <img src="/images/icon/home-page/trash-1.svg" alt="trash" />
-            Trash
-          </a>
-        </div> -->
       </div>
 
       <!-- Groups -->
       <div id="group-list" class="mt-6 w-full">
         <div class="flex justify-between items-center px-3 mb-2">
           <p class="font-semibold">Groups</p>
-          <button class="font-bold text-lg">+</button>
+          <button class="font-bold text-lg">
+            <i data-feather="plus" width="15px" height="15px"></i>
+          </button>
         </div>
 
         <div class="w-full rounded-xl hover:bg-neutral-200 transition">

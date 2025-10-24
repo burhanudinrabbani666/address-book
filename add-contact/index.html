@@ -4,72 +4,53 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Homie | Add Contact</title>
-
-    <!-- Tailwind CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Tailwind -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- Google Font -->
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
-    </style>
+    <script src="https://unpkg.com/feather-icons"></script>
   </head>
 
   <body
     class="flex gap-10 text-sm bg-neutral-50 text-neutral-800 p-4 font-[Inter]"
   >
     <!-- Navigation -->
-    <nav class="flex flex-col w-40 gap-4 m-2">
+    <nav
+      class="flex flex-col w-44 h-full gap-4 m-2 px-3 py-4 rounded-xl shadow-xl"
+    >
       <!-- Logo -->
       <a href="/" class="mx-auto my-3">
         <img src="/images/icon/home-page/Homie.svg" alt="Homie Logo" />
       </a>
 
       <!-- Navigation Menu -->
-      <div id="nav-menu" class="flex flex-col items-center gap-2">
+      <div
+        id="nav-list"
+        class="flex flex-col justify-center items-center gap-2"
+      >
         <!-- Add Contact -->
-        <div
-          class="w-full rounded-2xl bg-indigo-900 hover:bg-indigo-800 transition duration-150"
-        >
+        <div class="w-full rounded-2xl bg-indigo-900">
           <a
             href="/add-contact/index.html"
-            class="flex items-center gap-2 px-4 py-3 text-neutral-100 font-bold"
+            class="flex justify-between items-center gap-2 px-4 py-3 font-bold text-neutral-100"
           >
-            <img src="/images/icon/home-page/plus.svg" alt="add contact" />
-            Add Contact
+            <i data-feather="user-plus"></i>
+            <span>Add Contact</span>
           </a>
         </div>
 
         <!-- Contacts -->
-        <div
-          class="w-full rounded-2xl hover:bg-neutral-200 active:bg-neutral-300 transition"
-        >
-          <a
-            href="/index.html"
-            class="flex items-center gap-2 px-4 py-3 font-semibold text-neutral-800"
-          >
-            <img src="/images/icon/home-page/contact.svg" alt="contacts" />
-            Contacts
-          </a>
-        </div>
-
-        <!-- Favorites -->
-        <div class="w-full rounded-2xl hover:bg-neutral-200 transition">
+        <div class="w-full rounded-2xl hover:bg-neutral-200 py-3">
           <a
             href="#"
-            class="flex items-center gap-2 px-4 py-3 font-semibold text-neutral-800"
+            class="flex items-center gap-3 px-4 font-semibold text-neutral-800"
           >
-            <img src="/images/icon/home-page/star-gold-1.svg" alt="favorites" />
-            Favorites
-          </a>
-        </div>
-
-        <!-- Trash -->
-        <div class="w-full rounded-2xl hover:bg-neutral-200 transition">
-          <a
-            href="#"
-            class="flex items-center gap-2 px-4 py-3 font-semibold text-neutral-800"
-          >
-            <img src="/images/icon/home-page/trash-1.svg" alt="trash" />
-            Trash
+            <i data-feather="users"></i>
+            <span>Contacts</span>
           </a>
         </div>
       </div>
@@ -78,7 +59,9 @@
       <div id="group-list" class="mt-6 w-full">
         <div class="flex justify-between items-center px-3 mb-2">
           <p class="font-semibold">Groups</p>
-          <button class="font-bold">+</button>
+          <button class="font-bold text-lg">
+            <i data-feather="plus" width="15px" height="15px"></i>
+          </button>
         </div>
 
         <div class="w-full rounded-xl hover:bg-neutral-200 transition">
@@ -112,115 +95,92 @@
         id="add-contact-section"
         class="w-full max-w-4xl bg-neutral-100 rounded-xl p-8 flex flex-col gap-6"
       >
-        <h2 class="text-3xl font-bold mb-4">Add Contact</h2>
-
-        <!-- Name -->
-        <div class="flex gap-4 items-start">
-          <figure
-            class="w-24 h-24 border border-neutral-400 rounded-lg bg-neutral-200"
-          ></figure>
+        <!-- FORM START -->
+        <form id="add-contact-form" method="post" class="flex flex-col gap-6">
           <div class="flex flex-col flex-1 gap-1">
-            <label for="name-field" class="font-semibold">Name</label>
+            <label for="full-name" class="font-semibold">Full Name</label>
             <input
-              id="name-field"
+              id="full-name"
               type="text"
+              name="full-name"
               class="w-full py-2 px-3 border border-neutral-400 rounded-lg"
               placeholder="Full name"
             />
           </div>
-        </div>
-
-        <!-- Other Fields -->
-        <div class="grid grid-cols-2 gap-4">
-          <div class="flex flex-col gap-1">
-            <label for="email-field" class="font-semibold">Email</label>
-            <input
-              id="email-field"
-              type="email"
-              class="w-full py-2 px-3 border border-neutral-400 rounded-lg"
-              placeholder="example@email.com"
-            />
-          </div>
 
           <div class="flex flex-col gap-1">
-            <label for="phone-field" class="font-semibold">Phone</label>
+            <label for="phone" class="font-semibold">Phone</label>
             <input
-              id="phone-field"
-              type="text"
+              id="phone"
+              name="Phone"
+              type="tel"
               class="w-full py-2 px-3 border border-neutral-400 rounded-lg"
               placeholder="+62 812 3456 7890"
             />
           </div>
 
-          <div class="flex flex-col gap-1">
-            <label for="company-field" class="font-semibold"
-              >Company Name</label
-            >
-            <input
-              id="company-field"
-              type="text"
-              class="w-full py-2 px-3 border border-neutral-400 rounded-lg"
-              placeholder="Company name"
-            />
-          </div>
-
-          <div class="flex flex-col gap-1">
-            <label for="birthdate-field" class="font-semibold">Birthdate</label>
-            <input
-              id="birthdate-field"
-              type="date"
-              class="w-full py-2 px-3 border border-neutral-400 rounded-lg"
-            />
-          </div>
-        </div>
-
-        <!-- Address -->
-        <div class="flex flex-col gap-3">
-          <label class="font-semibold">Address</label>
-          <input
-            id="street-field"
-            type="text"
-            class="py-2 px-3 border border-neutral-400 rounded-lg"
-            placeholder="Street"
-          />
-
           <div class="grid grid-cols-2 gap-4">
+            <div class="flex flex-col gap-1">
+              <label for="email" class="font-semibold">Email</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                class="w-full py-2 px-3 border border-neutral-400 rounded-lg"
+                placeholder="example@email.com"
+              />
+            </div>
+
+            <div class="flex flex-col gap-1">
+              <label for="company" class="font-semibold">Company Name</label>
+              <input
+                id="company"
+                name="company"
+                type="text"
+                class="w-full py-2 px-3 border border-neutral-400 rounded-lg"
+                placeholder="Company name"
+              />
+            </div>
+
+            <div class="flex flex-col gap-1">
+              <label for="birthdate" class="font-semibold">Birthdate</label>
+              <input
+                id="birthdate"
+                name="birthdate"
+                type="date"
+                class="w-full py-2 px-3 border border-neutral-400 rounded-lg"
+              />
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-3">
+            <label class="font-semibold">Address</label>
             <input
-              id="city-field"
+              id="address"
+              name="address"
               type="text"
               class="py-2 px-3 border border-neutral-400 rounded-lg"
-              placeholder="City"
-            />
-            <input
-              id="province-field"
-              type="text"
-              class="py-2 px-3 border border-neutral-400 rounded-lg"
-              placeholder="Province"
-            />
-            <input
-              id="subdistrict-field"
-              type="text"
-              class="py-2 px-3 border border-neutral-400 rounded-lg"
-              placeholder="Sub District"
-            />
-            <input
-              id="country-field"
-              type="text"
-              class="py-2 px-3 border border-neutral-400 rounded-lg"
-              placeholder="Country"
+              placeholder="Street"
             />
           </div>
-        </div>
 
-        <!-- Button -->
-        <button
-          id="create-contact-button"
-          type="submit"
-          class="self-start px-6 py-3 rounded-full bg-indigo-600 text-white font-bold hover:bg-indigo-700 active:bg-indigo-900 transition"
-        >
-          Create Contact
-        </button>
+          <button
+            id="create-contact-button"
+            type="submit"
+            class="self-start px-6 py-3 rounded-full bg-indigo-600 text-white font-bold hover:bg-indigo-700 active:bg-indigo-900 transition"
+          >
+            Create Contact
+          </button>
+        </form>
+        <!-- FORM END -->
       </section>
     </main>
+
+    <script src="/service.js"></script>
+    <script src="/storage.js"></script>
+    <script src="index.js"></script>
+    <script>
+      feather.replace();
+    </script>
   </body>
 </html>

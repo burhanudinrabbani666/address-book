@@ -7,7 +7,7 @@ let dataContacts = [
     phone: "+62-1234-5678-999",
     email: "bani@exm.com",
     company: "",
-    birthdate: new Date(2002, 10, 14, 0),
+    birthdate: "2002-11-14",
     address: "Jl. Prapatan No.09, Ciwaringin, Cirebon, Indonesia",
   },
   {
@@ -78,32 +78,41 @@ function renderKeyDataContacts() {
 }
 function renderKeyDataContact(contactIndex) {
   return `
-    <a href="/detail-contact/?id=${contactIndex.id}" 
+    <div href="/detail-contact/?id=${contactIndex.id}" 
     class="group flex justify-between py-5 px-5 border-b border-neutral-300 hover:bg-neutral-300 rounded pointer">
       
       <p class="inline-block w-1/6 truncate text-neutral-900">${contactIndex.fullName}</p>
       <p class="inline-block w-1/6 truncate text-neutral-600 hover:text-blue-500">${contactIndex.phone}</p>
       <p class="inline-block w-1/6 truncate text-neutral-600 hover:text-blue-500">${contactIndex.email}</p>
       <p class="inline-block w-1/6 truncate text-neutral-600">${contactIndex.company}</p>
-      <div class="w-1/6 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200" >
+      <div class="w-1/6 px-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200" >
         
-        <button class="py-1 px-2.5 shadow rounded-xl hover:shadow-xl/30 hover:bg-neutral-200 ">
-        <i data-feather="star" width="16px" height="16px"></i>
-        </button>
+        <a
+        href=""
+        class="py-1 px-2.5 shadow rounded-xl hover:shadow-xl/30 hover:bg-neutral-200 ">
+          <i data-feather="edit-2" width="16px" height="16px"></i>
+        </a>
 
-        <button class="py-1 px-2.5 shadow rounded-xl hover:shadow-xl/30 hover:bg-neutral-200 ">
-        <i data-feather="edit-2" width="16px" height="16px"></i>
+        <button
+        onclick="editContactPage(${contactIndex.id})"
+        class="py-1 px-2.5 shadow rounded-xl hover:shadow-xl/30 hover:bg-neutral-200 ">
+          <i data-feather="edit-2" width="16px" height="16px"></i>
         </button>
         
-        <button onclick="deleteContactById(${contactIndex.id})" class="py-1 px-2.5 shadow rounded-xl hover:shadow-xl/30 hover:bg-neutral-200 ">
-        <i data-feather="trash" width="16px" height="16px"></i>
+        <button 
+        onclick="deleteContactById(${contactIndex.id})"
+        class="py-1 px-2.5 shadow rounded-xl hover:shadow-xl/30 hover:bg-neutral-200 ">
+          <i data-feather="trash" width="16px" height="16px"></i>
         </button>
 
       </div>
-    </a>
+    </div>
   `;
 }
 
+function editContactPage(id) {
+  window.location.href = `/edit-contact/?id=${id}`;
+}
 function deleteContactById(id) {
   const contacts = loadContactsFromStorage();
   const contactToDelete = contacts.find((contact) => contact.id == id);
