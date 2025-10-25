@@ -102,11 +102,11 @@ function renderKeyDataContact(contactIndex) {
       <p class="inline-block w-1/6 truncate text-neutral-600">${contactIndex.company}</p>
       <div class="w-1/6 px-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200" >
         
-        <a
-        href=""
+        <button
+        onclick="detailContactPage(${contactIndex.id})"
         class="py-1 px-2.5 shadow rounded-xl hover:shadow-xl/30 hover:bg-neutral-200 ">
-          <i data-feather="edit-2" width="16px" height="16px"></i>
-        </a>
+          <i data-feather="eye" width="16px" height="16px"></i>
+        </button>
 
         <button
         onclick="editContactPage(${contactIndex.id})"
@@ -123,6 +123,10 @@ function renderKeyDataContact(contactIndex) {
       </div>
     </div>
   `;
+}
+
+function detailContactPage(id) {
+  window.location.href = `/detail-contact/?id=${id}`;
 }
 
 function editContactPage(id) {

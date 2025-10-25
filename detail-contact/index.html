@@ -4,8 +4,86 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Tailwind -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <!-- Google Font -->
   </head>
-  <body class="flex gap-10 text-base bg-neutral-100 text-neutral-800"></body>
+  <body
+    class="flex gap-10 text-sm bg-neutral-50 text-neutral-800 p-4 font-[Inter]"
+  >
+    <!-- Navigation -->
+    <nav
+      class="flex flex-col w-44 gap-4 m-2 px-3 py-4 rounded-xl shadow-xl h-full"
+    >
+      <!-- Logo -->
+      <a href="/" class="mx-auto my-3">
+        <img src="/images/icon/home-page/Homie.svg" alt="Homie Logo" />
+      </a>
+
+      <!-- Navigation Menu -->
+      <div
+        id="nav-list"
+        class="flex flex-col justify-center items-center gap-2"
+      >
+        <!-- Add Contact -->
+        <div
+          class="w-full rounded-2xl bg-indigo-500 hover:bg-indigo-600 active:bg-indigo-900 transition duration-150"
+        >
+          <a
+            href="/add-contact/index.html"
+            class="flex justify-between items-center gap-2 px-4 py-3 font-bold text-neutral-100"
+          >
+            <i data-feather="user-plus"></i>
+            <span>Add Contact</span>
+          </a>
+        </div>
+
+        <!-- Contacts -->
+        <div class="w-full rounded-2xl hover:bg-neutral-200 py-3">
+          <a
+            href="/"
+            class="flex justify-between items-center gap-2 px-4 font-semibold text-neutral-800"
+          >
+            <i data-feather="users"></i>
+            <span>Contacts</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Groups -->
+      <div id="group-list" class="mt-6 w-full">
+        <div class="flex justify-between items-center px-3 mb-2">
+          <p class="font-semibold">Groups</p>
+          <button class="font-bold text-lg">
+            <i data-feather="plus" width="15px" height="15px"></i>
+          </button>
+        </div>
+
+        <div class="w-full rounded-xl hover:bg-neutral-200 transition">
+          <a href="#" class="flex items-center gap-2 px-4 py-3">
+            <img src="/images/icon/home-page/bear.svg" alt="Bearmentor" />
+            Bearmentor
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <div id="detail-contact" class="w-auto max-w-lg"></div>
+    </main>
+
+    <script src="/storage.js"></script>
+    <script src="/service.js"></script>
+    <script src="index.js"></script>
+    <script>
+      feather.replace();
+    </script>
+  </body>
 </html>

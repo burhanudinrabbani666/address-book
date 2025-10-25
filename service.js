@@ -36,22 +36,6 @@ function searchContactByKeyData(keyword) {
   return filteredContacts;
 }
 
-// // pastikan elemen input search ada, misal: <input id="search-input" ...>
-// const searchInput = document.getElementById("search-input");
-
-// if (searchInput) {
-//   searchInput.addEventListener("input", (e) => {
-//     const keyword = e.target.value;
-
-//     // ubah URL tanpa reload (supaya bisa bookmark / back button tetap berfungsi)
-//     const newUrl = keyword ? `?q=${encodeURIComponent(keyword)}` : window.location.pathname;
-//     window.history.replaceState({}, "", newUrl);
-
-//     // render ulang hasil pencarian
-//     renderKeyDataContacts();
-//   });
-// }
-
 ///////////////////////////////////////////
 ///////////////////////////////////////////
 
