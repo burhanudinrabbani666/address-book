@@ -84,39 +84,40 @@
     </nav>
 
     <!-- Main Page -->
-    <main class="flex flex-col flex-1 gap-6 m-4">
-      <!-- Top Section -->
-      <section
-        id="search-top"
-        class="w-full flex justify-between items-center gap-4 rounded-xl py-4"
-      >
-        <form
-          method="get"
-          class="border border-neutral-400 py-2 px-4 w-3/4 rounded-full"
-        >
-          <label for="q" class="hidden">Search</label>
-          <input
-            id="q"
-            type="search"
-            name="q"
-            class="w-full h-auto focus:outline-none"
-            placeholder="Search"
-          />
-        </form>
-      </section>
-
+    <main class="flex flex-col flex-1 gap-6 m-2">
       <!-- Contact Section -->
       <section
         id="contacts-section"
         class="w-full bg-neutral-100 flex flex-col gap-4 rounded-xl py-6 px-7"
       >
-        <h2 class="text-3xl font-bold mb-2">
-          Contacts <span id="length"></span>
-        </h2>
+        <div class="flex justify-between items-center mb-5">
+          <h2 class="text-3xl font-semibold">
+            Contacts <span id="length" class="w-10"></span>
+          </h2>
+
+          <div
+            id="search-top"
+            class="flex justify-between items-center gap-4 rounded-xl"
+          >
+            <form
+              method="get"
+              class="border border-neutral-400 py-2 px-4 rounded-full"
+            >
+              <label for="q" class="hidden">Search</label>
+              <input
+                id="q"
+                type="search"
+                name="q"
+                class="w-full h-auto focus:outline-none"
+                placeholder="Search"
+              />
+            </form>
+          </div>
+        </div>
 
         <!-- Header Row -->
         <div
-          class="flex justify-between w-full font-semibold text-neutral-700 border-b border-neutral-300 pb-2 px-5"
+          class="flex justify-between w-full font-semibold text-neutral-700 border-b border-neutral-300 pb-1 px-5"
         >
           <p class="inline-block w-1/7">Name</p>
           <p class="inline-block w-1/7">Email</p>
