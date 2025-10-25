@@ -58,15 +58,30 @@ function setInitialContacts() {
   }
 }
 function renderKeyDataContacts() {
-  const loadLocalStorage = loadContactsFromStorage();
+  const loadLocalStorage = loadContactsFromStorage() || [];
 
-  const queryString = window.location.search;
-  const params = new URLSearchParams(queryString);
-  const keyword = params.get("q");
-  const labelFilter = params.get("tag");
+  // ambil query
+  const searchParams = new URLSearchParams(window.location.search);
+  const query = searchParams.get("q");
 
+  // const searchResult = searchContactByKeyData(query);
+  // DOM
   const mainContactElement = document.getElementById("main-contact");
-  const localasString = loadLocalStorage
+
+  // render if have query
+  let contactsToRender = loadLocalStorage;
+  if (query && query.trim() !== "") {
+    contactsToRender = searchContactByKeyData(query);
+  }
+
+  if (contactsToRender.length === 0) {
+    mainContactElement.innerHTML = `
+      <div class="text-center text-neutral-500 py-10">No contacts found</div>
+    `;
+    return;
+  }
+
+  const localasString = contactsToRender
     .map((contact) => {
       return renderKeyDataContact(contact);
     })

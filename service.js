@@ -32,85 +32,70 @@ function searchContactByKeyData(keyword) {
       contact.phone.toLowerCase().includes(keyword.toLowerCase()) ||
       contact.email.toLowerCase().includes(keyword.toLowerCase())
   ); //
-
-  const mainContactElement = document.getElementById("main-contact"); // DOM contact list
-
-  if (filteredContacts.length === 0) {
-    alert(`contact not found`);
-    return renderKeyDataContacts(contacts);
-  } else {
-    const contactFound = filteredContacts
-      .map((contact) => renderKeyDataContact(contact))
-      .join("");
-    mainContactElement.innerHTML = `
-      <div id="contact" class="flex flex-col">
-        ${contactFound}
-      </div>
-    `;
-  }
-
   feather.replace(); // render ulang ikon
+  return filteredContacts;
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  setInitialContacts();
-  renderKeyDataContacts();
-  feather.replace();
+// // pastikan elemen input search ada, misal: <input id="search-input" ...>
+// const searchInput = document.getElementById("search-input");
 
-  const searchInput = document.getElementById("search-input");
-  const searchForm = document.getElementById("search-form");
+// if (searchInput) {
+//   searchInput.addEventListener("input", (e) => {
+//     const keyword = e.target.value;
 
-  searchForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const keyword = searchInput.value.trim();
-    searchContactByKeyData(keyword);
-  });
-});
+//     // ubah URL tanpa reload (supaya bisa bookmark / back button tetap berfungsi)
+//     const newUrl = keyword ? `?q=${encodeURIComponent(keyword)}` : window.location.pathname;
+//     window.history.replaceState({}, "", newUrl);
+
+//     // render ulang hasil pencarian
+//     renderKeyDataContacts();
+//   });
+// }
+
 ///////////////////////////////////////////
 ///////////////////////////////////////////
 
 // ----------------------------------------------------
 // ----------------------------------------------------
 // function to changed main data contacts
-function createdContact(
-  newName,
-  newPhone,
-  newEmail,
-  companyName,
-  birthdate,
-  address
-) {
-  // how to make id?
+function createdContact(newContactData) {
+  const loadDataContacts = loadContactsFromStorage() || [];
+
   const newId =
-    dataContacts.length > 0 ? dataContacts[dataContacts.length - 1].id + 1 : 1;
+    loadDataContacts.length > 0
+      ? loadDataContacts[loadDataContacts.length - 1].id + 1
+      : 1;
+
   const createdContactFields = {
     id: newId,
-    fullName: newName,
-    phone: newPhone,
-    email: newEmail,
-    company: companyName ?? null,
-    birthdate: birthdate ?? null,
-    address: address ?? null,
+    fullName: newContactData.fullName,
+    phone: newContactData.phone,
+    email: newContactData.email,
+    company: newContactData.company || null,
+    birthdate: newContactData.birthdate || null,
+    address: newContactData.address || null,
   };
 
-  // fullName, phone, email EMPTY
-  const isRequiredEmpty = checkRequiredFields(newName, newPhone);
+  const isRequiredEmpty = checkRequiredFields(
+    newContactData.fullName,
+    newContactData.phone
+  );
   if (isRequiredEmpty) {
-    console.log(`❗ Required data ( name, phone) cannot empty`);
+    console.log("❗ Required data (name, phone) cannot be empty");
     return;
   }
 
-  // Validate data: phone and email
-  const validate = validatePhone(newPhone);
-  if (validate == true) {
+  const isPhoneUsed = validatePhone(newContactData.phone);
+  if (isPhoneUsed) {
     console.log("❌ Number already used");
-    return; // for canceling all proses create contact
+    return;
   }
 
-  const createNewContactSuccess = [...dataContacts, createdContactFields];
-  saveToLocalStorage(createNewContactSuccess);
+  const updatedContacts = [...loadDataContacts, createdContactFields];
+  saveToLocalStorage(updatedContacts);
+
   console.log("✅ Contact successfully created");
-  return createNewContactSuccess;
+  return updatedContacts;
 }
 
 function deleteContactById(contacts, id) {
@@ -161,7 +146,8 @@ function editedContact(
 // ----------------------------------------------------
 // function to validate input data
 function validatePhone(phone) {
-  return dataContacts.some((contact) => contact.phone === phone);
+  const loadDataContacts = loadContactsFromStorage() || [];
+  return loadDataContacts.some((contact) => contact.phone === phone);
 }
 
 function checkRequiredFields(fullName, phone) {

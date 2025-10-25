@@ -91,12 +91,14 @@
         class="w-full flex justify-between items-center gap-4 rounded-xl py-4"
       >
         <form
-          id="search-form"
+          method="get"
           class="border border-neutral-400 py-2 px-4 w-3/4 rounded-full"
         >
+          <label for="q" class="hidden">Search</label>
           <input
-            id="search-input"
-            type="text"
+            id="q"
+            type="search"
+            name="q"
             class="w-full h-auto focus:outline-none"
             placeholder="Search"
           />
