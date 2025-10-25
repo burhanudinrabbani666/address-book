@@ -94,7 +94,7 @@ function renderKeyDataContacts() {
 function renderKeyDataContact(contactIndex) {
   return `
     <div href="/detail-contact/?id=${contactIndex.id}" 
-    class="group flex justify-between py-5 px-5 border-b border-neutral-300 hover:bg-neutral-300 rounded pointer">
+    class="group flex justify-between py-5 px-5 border-b border-neutral-200 hover:rounded-xl hover:bg-neutral-50 hover:shadow-lg hover:transition duration-200">
       
       <p class="inline-block w-1/6 truncate text-neutral-900">${contactIndex.fullName}</p>
       <p class="inline-block w-1/6 truncate text-neutral-600 hover:text-blue-500">${contactIndex.phone}</p>
@@ -104,19 +104,19 @@ function renderKeyDataContact(contactIndex) {
         
         <button
         onclick="detailContactPage(${contactIndex.id})"
-        class="py-1 px-2.5 shadow rounded-xl hover:shadow-xl/30 hover:bg-neutral-200 ">
+        class="py-1 px-2.5 bg-neutral-50 rounded-xl hover:bg-white hover:shadow-lg active:bg-neutral-300 ">
           <i data-feather="eye" width="16px" height="16px"></i>
         </button>
 
         <button
         onclick="editContactPage(${contactIndex.id})"
-        class="py-1 px-2.5 shadow rounded-xl hover:shadow-xl/30 hover:bg-neutral-200 ">
+        class="py-1 px-2.5 bg-neutral-50 rounded-xl hover:bg-white hover:shadow-lg active:bg-neutral-300 ">
           <i data-feather="edit-2" width="16px" height="16px"></i>
         </button>
         
         <button 
         onclick="deleteContactById(${contactIndex.id})"
-        class="py-1 px-2.5 shadow rounded-xl hover:shadow-xl/30 hover:bg-neutral-200 ">
+        class="py-1 px-2.5 bg-neutral-50 rounded-xl hover:bg-white hover:shadow-lg active:bg-neutral-300 ">
           <i data-feather="trash" width="16px" height="16px"></i>
         </button>
 
