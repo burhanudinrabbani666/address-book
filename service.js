@@ -65,7 +65,7 @@ function createdContact(newContactData) {
     newContactData.phone
   );
   if (isRequiredEmpty) {
-    console.log("❗ Required data (name, phone) cannot be empty");
+    alert("❗ Required data (name, phone) cannot be empty");
     return;
   }
 
@@ -78,7 +78,7 @@ function createdContact(newContactData) {
   const updatedContacts = [...loadDataContacts, createdContactFields];
   saveToLocalStorage(updatedContacts);
 
-  console.log("✅ Contact successfully created");
+  alert("✅ Contact successfully created");
   return updatedContacts;
 }
 

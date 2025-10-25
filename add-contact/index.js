@@ -14,4 +14,6 @@ addContactFormElement.addEventListener("submit", (event) => {
   };
 
   createdContact(newContactData);
+
+  window.location.href = `/`;
 });

@@ -20,8 +20,8 @@ function renderDetailContactById(dataContacts, id) {
 
 function renderDetailContact(contact) {
   return `
-    <div class="flex justify-center min-h-auto bg-neutral-100">
-      <div class="bg-white w-full max-w-md shadow-lg rounded-2xl border border-neutral-200 p-6">
+    <div class="w-md min-h-auto bg-neutral-100">
+      <div class="bg-whit e w-full max-w-md shadow-lg rounded-2xl border border-neutral-200 p-6">
         <!-- Header -->
         <div class="flex items-center justify-between mb-5">
           <h2 class="text-2xl font-semibold text-neutral-800">Contact Detail</h2>
