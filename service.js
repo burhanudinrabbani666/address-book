@@ -108,8 +108,6 @@ function editedContact(
 ) {
   const updatecontact = inputDataContacts.map((contact) => {
     if (contact.id === id) {
-      console.log("update contact success");
-
       return {
         ...contact,
         ...(newName && { fullName: newName }),
@@ -122,7 +120,7 @@ function editedContact(
     }
     return contact;
   });
-  dataContacts = updatecontact;
+  saveToLocalStorage(updatecontact);
   return updatecontact;
 }
 
