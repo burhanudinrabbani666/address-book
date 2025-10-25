@@ -74,29 +74,14 @@
     </nav>
 
     <!-- Main Section -->
-    <main class="flex flex-col flex-1 gap-6 m-4">
-      <!-- Top Search Bar -->
-      <section
-        id="search-top"
-        class="flex justify-between items-center gap-4 rounded-xl py-3"
-      >
-        <input
-          type="text"
-          class="border border-neutral-400 py-2 px-4 w-3/4 rounded-full"
-          placeholder="Search"
-        />
-        <a href="#" class="flex items-center">
-          <img src="/images/icon/home-page/setting.svg" alt="settings" />
-        </a>
-      </section>
-
+    <main class="flex flex-col flex-1 gap-6 m-2">
       <!-- Add Contact Form -->
       <section
         id="add-contact-section"
-        class="w-full max-w-4xl bg-neutral-100 rounded-xl p-8 flex flex-col gap-6"
+        class="max-w-lg bg-neutral-100 rounded-xl p-8 flex flex-col gap-6"
       >
         <!-- FORM START -->
-        <form id="add-contact-form" method="post" class="flex flex-col gap-6">
+        <form id="add-contact-form" method="post" class="space-y-4">
           <div class="flex flex-col flex-1 gap-1">
             <label for="full-name" class="font-semibold">Full Name</label>
             <input
@@ -119,38 +104,36 @@
             />
           </div>
 
-          <div class="grid grid-cols-2 gap-4">
-            <div class="flex flex-col gap-1">
-              <label for="email" class="font-semibold">Email</label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                class="w-full py-2 px-3 border border-neutral-400 rounded-lg"
-                placeholder="example@email.com"
-              />
-            </div>
+          <div class="flex flex-col gap-1">
+            <label for="email" class="font-semibold">Email</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              class="w-full py-2 px-3 border border-neutral-400 rounded-lg"
+              placeholder="example@email.com"
+            />
+          </div>
 
-            <div class="flex flex-col gap-1">
-              <label for="company" class="font-semibold">Company Name</label>
-              <input
-                id="company"
-                name="company"
-                type="text"
-                class="w-full py-2 px-3 border border-neutral-400 rounded-lg"
-                placeholder="Company name"
-              />
-            </div>
+          <div class="flex flex-col gap-1">
+            <label for="company" class="font-semibold">Company Name</label>
+            <input
+              id="company"
+              name="company"
+              type="text"
+              class="w-full py-2 px-3 border border-neutral-400 rounded-lg"
+              placeholder="Company name"
+            />
+          </div>
 
-            <div class="flex flex-col gap-1">
-              <label for="birthdate" class="font-semibold">Birthdate</label>
-              <input
-                id="birthdate"
-                name="birthdate"
-                type="date"
-                class="w-full py-2 px-3 border border-neutral-400 rounded-lg"
-              />
-            </div>
+          <div class="flex flex-col gap-1">
+            <label for="birthdate" class="font-semibold">Birthdate</label>
+            <input
+              id="birthdate"
+              name="birthdate"
+              type="date"
+              class="w-full py-2 px-3 border border-neutral-400 rounded-lg"
+            />
           </div>
 
           <div class="flex flex-col gap-3">
