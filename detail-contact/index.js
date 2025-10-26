@@ -21,7 +21,7 @@ function renderDetailContactById(dataContacts, id) {
 function renderDetailContact(contact) {
   return `
     <div class="w-md min-h-auto bg-neutral-100">
-      <div class="bg-whit e w-full max-w-md shadow-lg rounded-2xl border border-neutral-200 p-6">
+      <div class="bg-whit e w-full max-w-md shadow-md rounded-2xl border border-neutral-200 p-6">
         <!-- Header -->
         <div class="flex items-center justify-between mb-5">
           <h2 class="text-2xl font-semibold text-neutral-800">Contact Detail</h2>
@@ -61,13 +61,13 @@ function renderDetailContact(contact) {
         <div>
         <button
         onclick="editContactPage(${contact.id})"
-        class="py-1 px-2.5 shadow rounded-xl hover:shadow-xl/30 hover:bg-neutral-200 ">
+        class="py-1 px-2.5 shadow rounded-xl hover:shadow-md/30 hover:bg-neutral-200 ">
           <i data-feather="edit-2" width="16px" height="16px"></i>
         </button>
 
         <button 
         onclick="deleteContactById(${contact.id})"
-        class="py-1 px-2.5 shadow rounded-xl hover:shadow-xl/30 hover:bg-neutral-200 ">
+        class="py-1 px-2.5 shadow rounded-xl hover:shadow-md/30 hover:bg-neutral-200 ">
           <i data-feather="trash" width="16px" height="16px"></i>
         </button>
         </div>

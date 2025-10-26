@@ -1,6 +1,6 @@
 # HOMIE
 
-HOMIE project is designed to help users view, add, edit, group, and delete contacts, as well as display their interaction history.  
+HOMIE project is designed to help users view, add, edit, and delete contacts, as well as display their interaction history.  
 The design was inspired by:
 
 🔗 **Live Demo**: [address-book](https://address-book-six-theta.vercel.app/)
@@ -10,7 +10,7 @@ The design was inspired by:
 ### 1. Contact List
 
 - Display all contacts with key details such as name and email.
-- Click on a contact to view detailed information including phone, email, address, and notes.
+- Click on a contact to view detailed information including phone, email, address.
 - Responsive layout optimized for desktop, tablet, and mobile.
 
 ### 2. Add New Contact
@@ -28,11 +28,6 @@ The design was inspired by:
 
 - Search contacts by name, phone, or email.
 - Instant results without long scrolling.
-
-### 5. Groups & Categories
-
-- Organize contacts into groups such as _Family_, _Friends_, or _Work_.
-- Makes finding and managing contacts easier.
 
 ## 🛠️ Tech Stack
 
