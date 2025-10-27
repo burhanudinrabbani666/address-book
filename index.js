@@ -52,13 +52,16 @@ let dataContacts = [
 // localStorage.setItem("contact-data", saveInitial);
 
 function setInitialContacts() {
-  if (!localStorage.getItem("contact-data")) {
-    const saveInitial = JSON.stringify(dataContacts);
-    localStorage.setItem("contact-data", saveInitial);
+  const contacts = loadContactsFromStorage();
+
+  if (contacts.length === 0) {
+    saveToLocalStorage(dataContacts);
   }
 }
 function renderKeyDataContacts() {
-  const loadLocalStorage = loadContactsFromStorage() || [];
+  setInitialContacts();
+
+  const loadLocalStorage = loadContactsFromStorage();
   contactLength(loadLocalStorage);
   // ambil query
   const searchParams = new URLSearchParams(window.location.search);
@@ -155,7 +158,6 @@ function contactLength(dataContacts) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  setInitialContacts();
   renderKeyDataContacts();
   feather.replace();
 });
