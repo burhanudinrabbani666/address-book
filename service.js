@@ -32,7 +32,6 @@ function searchContactByKeyData(keyword) {
       contact.phone.toLowerCase().includes(keyword.toLowerCase()) ||
       contact.email.toLowerCase().includes(keyword.toLowerCase())
   ); //
-  contactLength();
   feather.replace(); // render ulang ikon
   return filteredContacts;
 }
@@ -65,15 +64,16 @@ function createdContact(newContactData) {
     newContactData.fullName,
     newContactData.phone
   );
+
   if (isRequiredEmpty) {
     alert("❗ Required data (name, phone) cannot be empty");
-    return;
+    return false;
   }
 
   const isPhoneUsed = validatePhone(newContactData.phone);
   if (isPhoneUsed) {
     console.log("❌ Number already used");
-    return;
+    return false;
   }
 
   const updatedContacts = [...loadDataContacts, createdContactFields];
@@ -88,7 +88,7 @@ function deleteContactById(contacts, id) {
 
   if (confirm(`are you sure want to delete ${contactToDelete.fullName}`)) {
     const updatedDataContacts = contacts.filter((item) => item.id !== id);
-    console.log(`✅ successly delete contact : ${contactToDelete.fullName}`);
+    alert(`✅ successly delete contact : ${contactToDelete.fullName}`);
     const newDataContacts = updatedDataContacts;
     dataContacts = newDataContacts;
     return newDataContacts;

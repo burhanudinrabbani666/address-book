@@ -59,7 +59,7 @@ function setInitialContacts() {
 }
 function renderKeyDataContacts() {
   const loadLocalStorage = loadContactsFromStorage() || [];
-
+  contactLength(loadLocalStorage);
   // ambil query
   const searchParams = new URLSearchParams(window.location.search);
   const query = searchParams.get("q");
@@ -72,6 +72,7 @@ function renderKeyDataContacts() {
   let contactsToRender = loadLocalStorage;
   if (query && query.trim() !== "") {
     contactsToRender = searchContactByKeyData(query);
+    contactLength(contactsToRender);
   }
 
   if (contactsToRender.length === 0) {
@@ -140,22 +141,20 @@ function deleteContactById(id) {
     const updatedContacts = contacts.filter(
       (item) => Number(item.id) !== Number(id)
     );
+    saveToLocalStorage(updatedContacts);
     alert(`✅ Successfully deleted contact: ${contactToDelete.fullName}`);
 
-    saveToLocalStorage(updatedContacts);
+    renderKeyDataContacts(updatedContacts);
     contactLength();
-    renderKeyDataContacts();
     feather.replace();
   }
 }
-function contactLength() {
-  const contactDataLength = loadContactsFromStorage();
+function contactLength(dataContacts) {
   const contactsLength = document.getElementById("length");
-  contactsLength.innerHTML = `(${contactDataLength.length})`;
+  contactsLength.innerHTML = `(${dataContacts.length})`;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  contactLength();
   setInitialContacts();
   renderKeyDataContacts();
   feather.replace();

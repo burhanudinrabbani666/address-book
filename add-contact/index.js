@@ -13,7 +13,8 @@ addContactFormElement.addEventListener("submit", (event) => {
     address: formData.get("address")?.toString().trim() || null,
   };
 
-  createdContact(newContactData);
-
-  window.location.href = `/`;
+  const succes = createdContact(newContactData);
+  if (succes) {
+    window.location.href = `/`;
+  }
 });
