@@ -9,18 +9,6 @@ function renderDetailContactById(dataContacts, id) {
   renderDetailContact(renderDetailContactById);
 }
 
-function renderDetailContact(contactIndex) {
-  return `<li>
-    👤 ${contactIndex.fullName} 
-    📱 ${contactIndex.phone}
-    📧 ${contactIndex.email}
-    🏢 ${contactIndex.company}
-    🎂 ${contactIndex.birthdate}
-    📌 ${contactIndex.address}
-    </li>
-  `;
-}
-
 //////////////////////////////////
 //////////////////////////////////
 function searchContactByKeyData(keyword) {
