@@ -143,12 +143,19 @@ function deleteContactById(id) {
     alert(`✅ Successfully deleted contact: ${contactToDelete.fullName}`);
 
     saveToLocalStorage(updatedContacts);
+    contactLength();
     renderKeyDataContacts();
     feather.replace();
   }
 }
+function contactLength() {
+  const contactDataLength = loadContactsFromStorage();
+  const contactsLength = document.getElementById("length");
+  contactsLength.innerHTML = `(${contactDataLength.length})`;
+}
 
 document.addEventListener("DOMContentLoaded", () => {
+  contactLength();
   setInitialContacts();
   renderKeyDataContacts();
   feather.replace();

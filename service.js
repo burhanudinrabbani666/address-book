@@ -32,6 +32,7 @@ function searchContactByKeyData(keyword) {
       contact.phone.toLowerCase().includes(keyword.toLowerCase()) ||
       contact.email.toLowerCase().includes(keyword.toLowerCase())
   ); //
+  contactLength();
   feather.replace(); // render ulang ikon
   return filteredContacts;
 }
