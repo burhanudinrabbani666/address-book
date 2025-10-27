@@ -3,6 +3,6 @@ function saveToLocalStorage(contact) {
 }
 
 function loadContactsFromStorage() {
-  const load = localStorage.getItem("contact-data");
-  return load ? JSON.parse(load) : [];
+  const contacts = localStorage.getItem("contact-data");
+  return contacts ? JSON.parse(contacts) : [];
 }

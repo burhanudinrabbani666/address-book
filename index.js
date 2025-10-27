@@ -6,7 +6,7 @@ let dataContacts = [
     fullName: "Burhanudin Rabbani",
     phone: "+62-1234-5678-999",
     email: "bani@exm.com",
-    company: "",
+    company: null,
     birthdate: "2002-11-14",
     address: "Jl. Prapatan No.09, Ciwaringin, Cirebon, Indonesia",
   },
@@ -48,9 +48,6 @@ let dataContacts = [
   },
 ];
 
-// const saveInitial = JSON.stringify(dataContacts);
-// localStorage.setItem("contact-data", saveInitial);
-
 function setInitialContacts() {
   const contacts = loadContactsFromStorage();
 
@@ -58,24 +55,25 @@ function setInitialContacts() {
     saveToLocalStorage(dataContacts);
   }
 }
-function renderKeyDataContacts() {
+
+function renderContacts() {
   setInitialContacts();
 
-  const loadLocalStorage = loadContactsFromStorage();
-  contactLength(loadLocalStorage);
+  const contacts = loadContactsFromStorage();
+
   // ambil query
   const searchParams = new URLSearchParams(window.location.search);
   const query = searchParams.get("q");
 
   // const searchResult = searchContactByKeyData(query);
   // DOM
-  const mainContactElement = document.getElementById("main-contact");
+  const mainContactElement = document.getElementById("main-contacts");
 
   // render if have query
-  let contactsToRender = loadLocalStorage;
+  let contactsToRender = contacts;
+
   if (query && query.trim() !== "") {
     contactsToRender = searchContactByKeyData(query);
-    contactLength(contactsToRender);
   }
 
   if (contactsToRender.length === 0) {
@@ -85,41 +83,46 @@ function renderKeyDataContacts() {
     return;
   }
 
-  const localasString = contactsToRender
+  const localAsString = contactsToRender
     .map((contact) => {
-      return renderKeyDataContact(contact);
+      return renderContact(contact);
     })
     .join("");
-  mainContactElement.innerHTML = `<div id ="contact" class = "flex flex-col ">
-    ${localasString}
+  mainContactElement.innerHTML = `<div id="contact" class="flex flex-col ">
+    ${localAsString}
   </div>`;
+
+  const contactsQuantity = document.getElementById("quantity");
+  contactsQuantity.innerHTML = `(${contacts.length})`;
+
   feather.replace();
 }
-function renderKeyDataContact(contactIndex) {
+
+function renderContact(contact) {
   return `
-    <div href="/detail-contact/?id=${contactIndex.id}" 
+    <div href="/detail-contact/?id=${contact.id}" 
     class="group flex justify-between py-5 px-5 border-b border-neutral-200 hover:rounded-xl hover:bg-neutral-50 hover:shadow-md hover:transition duration-200">
-      
-      <p class="inline-block w-1/6 truncate text-neutral-900">${contactIndex.fullName}</p>
-      <p class="inline-block w-1/6 truncate text-neutral-600 hover:text-blue-500">${contactIndex.phone}</p>
-      <p class="inline-block w-1/6 truncate text-neutral-600 hover:text-blue-500">${contactIndex.email}</p>
-      <p class="inline-block w-1/6 truncate text-neutral-600">${contactIndex.company}</p>
+
+      <p class="inline-block w-1/6 truncate text-neutral-900">${contact.fullName}</p>
+      <p class="inline-block w-1/6 truncate text-neutral-600 hover:text-blue-500">${contact.phone}</p>
+      <p class="inline-block w-1/6 truncate text-neutral-600 hover:text-blue-500">${contact.email}</p>
+      <p class="inline-block w-1/6 truncate text-neutral-600">${contact.company}</p>
       <div class="w-1/6 px-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200" >
-        
-        <button
-        onclick="detailContactPage(${contactIndex.id})"
+
+        <a
+        href="/detail-contact/?id=${contact.id}"
         class="py-1 px-2.5 bg-neutral-50 rounded-xl hover:bg-white hover:shadow-md active:bg-neutral-300 ">
           <i data-feather="eye" width="16px" height="16px"></i>
-        </button>
+        </a>
 
-        <button
-        onclick="editContactPage(${contactIndex.id})"
+        <a
+        href="/edit-contact/?id=${contact.id}"
         class="py-1 px-2.5 bg-neutral-50 rounded-xl hover:bg-white hover:shadow-md active:bg-neutral-300 ">
           <i data-feather="edit-2" width="16px" height="16px"></i>
-        </button>
-        
-        <button 
-        onclick="deleteContactById(${contactIndex.id})"
+        </a>
+
+        <button
+        onclick="deleteContactById(${contact.id})"
         class="py-1 px-2.5 bg-neutral-50 rounded-xl hover:bg-white hover:shadow-md active:bg-neutral-300 ">
           <i data-feather="trash" width="16px" height="16px"></i>
         </button>
@@ -129,35 +132,21 @@ function renderKeyDataContact(contactIndex) {
   `;
 }
 
-function detailContactPage(id) {
-  window.location.href = `/detail-contact/?id=${id}`;
-}
-
-function editContactPage(id) {
-  window.location.href = `/edit-contact/?id=${id}`;
-}
 function deleteContactById(id) {
   const contacts = loadContactsFromStorage();
   const contactToDelete = contacts.find((contact) => contact.id == id);
 
-  if (confirm(`Are you sure want to delete ${contactToDelete.fullName}?`)) {
-    const updatedContacts = contacts.filter(
-      (item) => Number(item.id) !== Number(id)
-    );
-    saveToLocalStorage(updatedContacts);
-    alert(`✅ Successfully deleted contact: ${contactToDelete.fullName}`);
+  const updatedContacts = contacts.filter(
+    (item) => Number(item.id) !== Number(id)
+  );
 
-    renderKeyDataContacts(updatedContacts);
-    contactLength();
-    feather.replace();
-  }
-}
-function contactLength(dataContacts) {
-  const contactsLength = document.getElementById("length");
-  contactsLength.innerHTML = `(${dataContacts.length})`;
+  saveToLocalStorage(updatedContacts);
+  renderContacts(updatedContacts);
+
+  feather.replace();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  renderKeyDataContacts();
+  renderContacts();
   feather.replace();
 });
