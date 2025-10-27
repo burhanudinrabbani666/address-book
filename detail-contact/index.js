@@ -89,11 +89,10 @@ function deleteContactById(id) {
     const updatedContacts = contacts.filter(
       (item) => Number(item.id) !== Number(id)
     );
+    saveToLocalStorage(updatedContacts);
     alert(`✅ Successfully deleted contact: ${contactToDelete.fullName}`);
 
-    saveToLocalStorage(updatedContacts);
-    renderKeyDataContacts();
-    feather.replace();
+    window.location.href = `/`; // ?
   }
 }
 
