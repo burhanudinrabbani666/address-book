@@ -110,11 +110,11 @@ function renderKeyDataContact(contact) {
       
       <!-- contact-->
 
-      <div class="flex gap-2 justify-between items-center w-1/6 truncate text-neutral-600 hover:text-blue-500">
-        <span id="for-copy">${contact.phone}</span> 
+      <div class="flex justify-around items-center w-1/6 truncate text-neutral-600 hover:text-blue-500 ">
+        <span class="for-copy">${contact.phone}</span> 
         <button
-        onclick="event.stopPropagation(); copyPhoneNumber()"
-        class="bg-red-500 p-2 rounded"
+        onclick="event.stopPropagation(); copyPhone(this)"
+        class=" p-1 rounded cursor-pointer hover:bg-neutral-300"
         >
           <i data-feather="copy" class="w-3 h-3"></i>
         </button> 
@@ -172,14 +172,19 @@ function contactLength(dataContacts) {
   contactsLength.innerHTML = `(${dataContacts.length})`;
 }
 
-const copyPhoneNumber = async () => {
-  let phoneToCopy = document.getElementById("for-copy");
-  try {
-    await navigator.clipboard.writeText(phoneToCopy.innerHTML);
-  } catch (err) {
-    console.log(`failed`, err);
-  }
-};
+function copyPhone(button) {
+  const phoneElement = button.parentElement.querySelector(".for-copy");
+  const phoneText = phoneElement.textContent;
+
+  navigator.clipboard
+    .writeText(phoneText)
+    .then(() => {
+      console.log(`${phoneText} is copied`);
+    })
+    .catch((err) => {
+      console.log(`failed to copied`, err);
+    });
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   renderKeyDataContacts();
@@ -187,3 +192,4 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 //TODO funtion favoourites and copy text
+// copy text ✅
