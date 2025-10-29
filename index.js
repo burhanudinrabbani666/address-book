@@ -9,6 +9,7 @@ let dataContacts = [
     company: "",
     birthdate: "2002-11-14",
     address: "Jl. Prapatan No.09, Ciwaringin, Cirebon, Indonesia",
+    Favourites: true,
   },
   {
     id: 2,
@@ -18,6 +19,7 @@ let dataContacts = [
     company: "PT Kaldu Sari Nabati",
     birthdate: "2001-11-14",
     address: "Jl. Mawar No.04, Ligung, Majalengka, Indonesia",
+    Favourites: true,
   },
   {
     id: 3,
@@ -27,6 +29,7 @@ let dataContacts = [
     company: "CV Maju Jaya Abadi",
     birthdate: "1998-05-03",
     address: "Jl. Melati, Antapati, Bandung, Indonesia",
+    Favourites: true,
   },
   {
     id: 4,
@@ -36,6 +39,7 @@ let dataContacts = [
     company: "PT Megah Karya Sentosa",
     birthdate: "1995-02-21",
     address: "Jl. Kenaga No.07, Sukolilo, Surabaya, Indonesia",
+    Favourites: true,
   },
   {
     id: 5,
@@ -45,6 +49,7 @@ let dataContacts = [
     company: "IndoTech Global",
     birthdate: "2000-09-09",
     address: "Jl. Merpati No.01, Pondok Aren, Tangerang Selatan, Indonesia",
+    favourited: true,
   },
 ];
 
@@ -95,31 +100,46 @@ function renderKeyDataContacts() {
   </div>`;
   feather.replace();
 }
-function renderKeyDataContact(contactIndex) {
+function renderKeyDataContact(contact) {
   return `
-    <div href="/detail-contact/?id=${contactIndex.id}" 
-    class="group flex justify-between py-5 px-5 border-b border-neutral-200 hover:rounded-xl hover:bg-neutral-50 hover:shadow-md hover:transition duration-200">
+    <div
+    onclick="detailPage(${contact.id})"
+    class="group flex justify-between py-5 px-5 border-b border-neutral-200 cursor-pointer hover:rounded-xl hover:bg-neutral-50 hover:shadow-md hover:transition duration-200">
       
-      <p class="inline-block w-1/6 truncate text-neutral-900">${contactIndex.fullName}</p>
-      <p class="inline-block w-1/6 truncate text-neutral-600 hover:text-blue-500">${contactIndex.phone}</p>
-      <p class="inline-block w-1/6 truncate text-neutral-600 hover:text-blue-500">${contactIndex.email}</p>
-      <p class="inline-block w-1/6 truncate text-neutral-600">${contactIndex.company}</p>
+      <p class="inline-block w-1/6 truncate text-neutral-900">${contact.fullName}</p>
+      
+      <!-- contact-->
+
+      <div class="flex gap-2 w-1/6 truncate text-neutral-600 hover:text-blue-500">
+        <span>${contact.phone}</span> 
+        <button
+        onclick="event.stopPropagation();"
+        class="copy-button w-4 h-4 hover:bg-red-500"
+        data-copy="${contact.phone}
+        title="copy-phone-number"
+        >
+          <i data-feather="copy" class="w-3 h-3"></i>
+        </button> 
+      </div>
+      <p class="inline-block w-1/6 truncate text-neutral-600 hover:text-blue-500">${contact.email}</p>
+      <p class="inline-block w-1/6 truncate text-neutral-600">${contact.company}</p>
+      
       <div class="w-1/6 px-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200" >
         
-        <button
-        onclick="detailContactPage(${contactIndex.id})"
+        <button 
+        onclick="event.stopPropagation()"
         class="py-1 px-2.5 bg-neutral-50 rounded-xl hover:bg-white hover:shadow-md active:bg-neutral-300 ">
-          <i data-feather="eye" width="16px" height="16px"></i>
+          <i data-feather="star" width="16px" height="16px"></i>
         </button>
 
-        <button
-        onclick="editContactPage(${contactIndex.id})"
+        <a
+        href="/edit-contact/?id=${contact.id}"
         class="py-1 px-2.5 bg-neutral-50 rounded-xl hover:bg-white hover:shadow-md active:bg-neutral-300 ">
           <i data-feather="edit-2" width="16px" height="16px"></i>
-        </button>
+        </a>
         
         <button 
-        onclick="deleteContactById(${contactIndex.id})"
+        onclick="event.stopPropagation(); deleteContactById(${contact.id})"
         class="py-1 px-2.5 bg-neutral-50 rounded-xl hover:bg-white hover:shadow-md active:bg-neutral-300 ">
           <i data-feather="trash" width="16px" height="16px"></i>
         </button>
@@ -129,13 +149,10 @@ function renderKeyDataContact(contactIndex) {
   `;
 }
 
-function detailContactPage(id) {
+function detailPage(id) {
   window.location.href = `/detail-contact/?id=${id}`;
 }
 
-function editContactPage(id) {
-  window.location.href = `/edit-contact/?id=${id}`;
-}
 function deleteContactById(id) {
   const contacts = loadContactsFromStorage();
   const contactToDelete = contacts.find((contact) => contact.id == id);
@@ -157,7 +174,19 @@ function contactLength(dataContacts) {
   contactsLength.innerHTML = `(${dataContacts.length})`;
 }
 
+function addCopyEventListener() {
+  document.querySelectorAll(".copy-button").forEach((button) => {
+    button.addEventListener("click", function (event) {
+      event.preventDefault();
+
+      const textCopy = this.getAttribute("data-copy");
+    });
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   renderKeyDataContacts();
   feather.replace();
 });
+
+//TODO funtion favoourites and copy text
