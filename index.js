@@ -1,4 +1,5 @@
 "use strict";
+let dataGrops = ["Family", "Friends", "Work", "Gamers"];
 
 let dataContacts = [
   {
@@ -10,6 +11,7 @@ let dataContacts = [
     birthdate: "2002-11-14",
     address: "Jl. Prapatan No.09, Ciwaringin, Cirebon, Indonesia",
     Favourites: true,
+    label: [dataGrops[0]],
   },
   {
     id: 2,
@@ -20,6 +22,7 @@ let dataContacts = [
     birthdate: "2001-11-14",
     address: "Jl. Mawar No.04, Ligung, Majalengka, Indonesia",
     Favourites: true,
+    label: [dataGrops[1], dataGrops[2]],
   },
   {
     id: 3,
@@ -30,6 +33,7 @@ let dataContacts = [
     birthdate: "1998-05-03",
     address: "Jl. Melati, Antapati, Bandung, Indonesia",
     Favourites: true,
+    label: [dataGrops[1], dataGrops[3]],
   },
   {
     id: 4,
@@ -40,6 +44,7 @@ let dataContacts = [
     birthdate: "1995-02-21",
     address: "Jl. Kenaga No.07, Sukolilo, Surabaya, Indonesia",
     Favourites: true,
+    label: dataGrops[1],
   },
   {
     id: 5,
@@ -50,19 +55,81 @@ let dataContacts = [
     birthdate: "2000-09-09",
     address: "Jl. Merpati No.01, Pondok Aren, Tangerang Selatan, Indonesia",
     favourited: true,
+    label: [dataGrops[1], dataGrops[2]],
   },
 ];
 
-// const saveInitial = JSON.stringify(dataContacts);
-// localStorage.setItem("contact-data", saveInitial);
-
 function setInitialContacts() {
   const contacts = loadContactsFromStorage();
+  const labels = loadGroups();
 
   if (contacts.length === 0) {
     saveToLocalStorage(dataContacts);
   }
+
+  if (labels.length === 0) {
+    saveGroups(dataGrops);
+  }
 }
+
+function renderFilteredContacts(filteredContacts, label) {
+  const mainContactElement = document.getElementById("main-contact");
+
+  if (filteredContacts.length === 0) {
+    mainContactElement.innerHTML = `
+      <div class="text-center text-neutral-500 py-10">
+        Tidak ada kontak dengan label <strong>${label}</strong>
+      </div>
+    `;
+    return;
+  }
+
+  // Gunakan fungsi renderKeyDataContact() milikmu untuk render setiap kontak
+  const contacts = filteredContacts.map(renderKeyDataContact).join("");
+  mainContactElement.innerHTML = `
+    <div class="flex flex-col">
+      ${contacts}
+    </div>
+  `;
+
+  // Refresh ikon Feather setelah update DOM
+  feather.replace();
+}
+
+function renderLabelsData() {
+  const loadLabels = loadGroups();
+  const lablesElement = document.getElementById("labels");
+
+  // render all labels button
+  const labelsString = loadLabels
+    .map((label) => {
+      return renderLabels(label);
+    })
+    .join("");
+  lablesElement.innerHTML = labelsString;
+
+  const labelButton = document.querySelectorAll(".label-btn");
+  labelButton.forEach((btn) => {
+    const selectedLabel = btn.dataset.label;
+
+    btn.addEventListener(`click`, () => {
+      const filteredContacts = filteredContactByLabel(selectedLabel);
+      renderFilteredContacts(filteredContacts, selectedLabel);
+    });
+  });
+}
+
+function renderLabels(label) {
+  return `<button class="label-btn w-full h-auto flex items-center gap-4 px-4 font-semibold text-neutral-800 py-3 hover:bg-neutral-200 rounded-xl cursor-pointer transition"
+  data-label="${label}"
+  >
+  <i data-feather="tag" width="16px" height="16px"></i>
+  <sapn class="label-text">${label}</sapn>
+  </button>`;
+}
+
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
 function renderKeyDataContacts() {
   setInitialContacts();
 
@@ -120,7 +187,10 @@ function renderKeyDataContact(contact) {
         </button> 
       </div>
       <p class="inline-block w-1/6 truncate text-neutral-600 hover:text-blue-500">${contact.email}</p>
-      <p class="inline-block w-1/6 truncate text-neutral-600">${contact.company}</p>
+
+      <p class="inline-block w-1/6 truncate text-neutral-600">
+      ${contact.label}
+      </p>
       
       <div class="w-1/6 px-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200" >
         
@@ -188,8 +258,18 @@ function copyPhone(button) {
 
 document.addEventListener("DOMContentLoaded", () => {
   renderKeyDataContacts();
+  renderLabelsData();
   feather.replace();
 });
 
 //TODO funtion favoourites and copy text
 // copy text ✅
+
+function filteredContactByLabel(label) {
+  return dataContacts.filter(
+    (contact) => Array.isArray(contact.label) && contact.label.includes(label)
+  );
+}
+
+const filterContact = filteredContactByLabel(dataGrops[0]);
+console.log(filterContact);

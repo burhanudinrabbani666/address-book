@@ -3,6 +3,15 @@ function saveToLocalStorage(contact) {
 }
 
 function loadContactsFromStorage() {
-  const load = localStorage.getItem("contact-data");
-  return load ? JSON.parse(load) : [];
+  const loadContact = localStorage.getItem("contact-data");
+  return loadContact ? JSON.parse(loadContact) : [];
+}
+
+function saveGroups(label) {
+  localStorage.setItem("labels-data", JSON.stringify(label));
+}
+
+function loadGroups() {
+  const loadLabels = localStorage.getItem("labels-data");
+  return loadLabels ? JSON.parse(loadLabels) : [];
 }

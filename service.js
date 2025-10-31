@@ -23,7 +23,6 @@ function searchContactByKeyData(keyword) {
   feather.replace(); // render ulang ikon
   return filteredContacts;
 }
-
 ///////////////////////////////////////////
 ///////////////////////////////////////////
 
