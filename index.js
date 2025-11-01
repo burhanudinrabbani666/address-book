@@ -264,12 +264,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
 //TODO funtion favoourites and copy text
 // copy text ✅
-
-function filteredContactByLabel(label) {
-  return dataContacts.filter(
-    (contact) => Array.isArray(contact.label) && contact.label.includes(label)
-  );
-}
-
-const filterContact = filteredContactByLabel(dataGrops[0]);
-console.log(filterContact);
